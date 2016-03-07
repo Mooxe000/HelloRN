@@ -4,7 +4,7 @@ coffee = require 'gulp-coffee'
 
 module.exports = ->
 
-  gulp.src './src/coffee/src/*'
+  gulp.src './src/coffee/src/**/*'
   .pipe (
     coffee bare: true
   ).on 'error', gutil.log

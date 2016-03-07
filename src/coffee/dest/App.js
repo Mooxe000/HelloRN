@@ -1,6 +1,6 @@
 var RN, Render;
 
-Render = require('./AppRender');
+Render = require('./AppRender/index');
 
 RN = require('react-native');
 
