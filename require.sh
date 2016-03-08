@@ -7,7 +7,7 @@ cnpm install --save-dev \
   coffee-script \
   ddeyes \
   # lodash \
-  # shelljs \
+  shelljs \
   build-module-task \
   gulp \
   gulp-util \
