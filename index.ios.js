@@ -2,7 +2,7 @@
 // import rnIos from './src/bak/index.ios.js'
 
 // es6
-// import rnIos from './src/es6/index.ios.js'
+// import rnIos from './src/es6/index.js'
 
 // es5
 // require('./src/es5/index.js');

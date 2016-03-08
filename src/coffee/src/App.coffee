@@ -1,7 +1,9 @@
-Render = require './AppRender/index'
-RN = require 'react-native'
+Render = require './AppRender'
+{ Component } = require 'react'
 
-module.exports = RN.createClass
+class App extends Component
   render: ->
     Render.call @
     , @props, @state
+
+module.exports = App

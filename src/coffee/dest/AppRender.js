@@ -1,44 +1,45 @@
-var Platform, RN, StyleSheet, Text, View, notice, ref, styles;
+var Platform, RN, Screen, StyleSheet, Text, View, cfxify, ref, ref1, styles;
 
-ref = RN = require('react-native'), Platform = ref.Platform, StyleSheet = ref.StyleSheet, Text = ref.Text, View = ref.View;
+ref = RN = require('react-native'), StyleSheet = ref.StyleSheet, Platform = ref.Platform;
+
+cfxify = require('./common/cfx').cfxify;
+
+ref1 = require('./common/cfx-components'), View = ref1.View, Text = ref1.Text;
+
+Screen = cfxify(require('./Screen'));
 
 styles = StyleSheet.create({
   container: {
+    flex: 1
+  },
+  screen: {
+    flex: 3,
+    flexDirection: 'row',
+    alignItems: Platform.OS === 'android' ? 'center' : 'flex-end',
+    justifyContent: 'flex-end',
+    backgroundColor: '#68cef2',
+    padding: 18
+  },
+  formulae: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF'
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    backgroundColor: '#4c4c4c',
+    padding: 20
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5
+  keyboard: {
+    height: 420
   }
 });
 
-notice = function() {
-  if (Platform.OS === 'ios') {
-    return RN.createElement(Text, {
-      style: styles.instructions
-    }, "Press Cmd+R to reload,\nCmd+D or shake for dev menu");
-  } else {
-    return RN.createElement(Text, {
-      style: styles.instructions
-    }, 'Shake or press menu button for dev menu');
-  }
-};
-
 module.exports = function() {
-  return RN.createElement(View, {
+  return View({
     style: styles.container
-  }, RN.createElement(Text, {
-    style: styles.welcome
-  }, 'Welcome to React Native!'), RN.createElement(Text, {
-    style: styles.instructions
-  }, 'To get started, edit index.ios.js'), notice());
+  }, View({
+    style: styles.screen
+  }, Screen()), Text({
+    style: styles.formulae
+  }, 'Formulae'), Text({
+    style: styles.keyboard
+  }, 'keyboard'));
 };
