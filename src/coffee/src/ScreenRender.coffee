@@ -1,11 +1,14 @@
 {
-  StyleSheet
-} = RN = require 'react-native'
+  Comps
+  Styl
+} = require './common/cfx'
 {
   Text
-} = require './common/cfx-components'
+} = Comps
 
-styles = StyleSheet.create
+RN = require 'react-native'
+
+styles = Styl
 
   screen:
     color: '#190d08'

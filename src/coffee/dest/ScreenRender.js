@@ -1,10 +1,12 @@
-var RN, StyleSheet, Text, styles;
+var Comps, RN, Styl, Text, ref, styles;
 
-StyleSheet = (RN = require('react-native')).StyleSheet;
+ref = require('./common/cfx'), Comps = ref.Comps, Styl = ref.Styl;
 
-Text = require('./common/cfx-components').Text;
+Text = Comps.Text;
 
-styles = StyleSheet.create({
+RN = require('react-native');
+
+styles = Styl({
   screen: {
     color: '#190d08',
     fontSize: 70,

@@ -1,20 +1,23 @@
 {
-  StyleSheet
   Platform
-} = RN = require 'react-native'
+} = require 'react-native'
 
-{ cfxify } = require './common/cfx'
+{
+  cfx
+  Comps
+  Styl
+} = require './common/cfx'
 
 {
   View
   Text
-} = require './common/cfx-components'
+} = Comps
 
-Screen = cfxify require './Screen'
-# Formulae = cfxify require './Formulae'
-# Keyboard = cfxify require './Keyboard'
+Screen = cfx require './Screen'
+# Formulae = cfx require './Formulae'
+Keyboard = cfx require './Keyboard'
 
-styles = StyleSheet.create
+styles = Styl
 
   container:
     flex: 1
@@ -50,5 +53,5 @@ module.exports = ->
     Text style: styles.formulae
     , 'Formulae'
   ,
-    Text style: styles.keyboard
-    , 'keyboard'
+    View style: styles.keyboard
+    , Keyboard()

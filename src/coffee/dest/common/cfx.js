@@ -1,9 +1,20 @@
-var RN, cfxify;
+var Comps, RN, Styl, Text, TouchableHighlight, TouchableOpacity, View, cfx, ref;
 
-RN = require('react-native');
+ref = RN = require('react-native'), Text = ref.Text, View = ref.View, TouchableHighlight = ref.TouchableHighlight, TouchableOpacity = ref.TouchableOpacity;
 
-cfxify = function(compName) {
-  return RN.createFactory(compName);
+cfx = RN.createFactory;
+
+Styl = RN.StyleSheet.create;
+
+Comps = {
+  View: cfx(View),
+  Text: cfx(Text),
+  TouchableHighlight: cfx(TouchableHighlight),
+  TouchableOpacity: cfx(TouchableOpacity)
 };
 
-exports.cfxify = cfxify;
+exports.cfx = cfx;
+
+exports.Styl = Styl;
+
+exports.Comps = Comps;

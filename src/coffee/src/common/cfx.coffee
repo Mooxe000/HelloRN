@@ -1,5 +1,20 @@
-RN = require 'react-native'
+{
+  Text
+  View
+  TouchableHighlight
+  TouchableOpacity
+} = RN = require 'react-native'
 
-cfxify = (compName) -> RN.createFactory compName
+cfx = RN.createFactory
 
-exports.cfxify = cfxify
+Styl = RN.StyleSheet.create
+
+Comps =
+  View: cfx View
+  Text: cfx Text
+  TouchableHighlight: cfx TouchableHighlight
+  TouchableOpacity: cfx TouchableOpacity
+
+exports.cfx = cfx
+exports.Styl = Styl
+exports.Comps = Comps

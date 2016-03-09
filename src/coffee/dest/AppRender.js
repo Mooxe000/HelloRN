@@ -1,14 +1,16 @@
-var Platform, RN, Screen, StyleSheet, Text, View, cfxify, ref, ref1, styles;
+var Comps, Keyboard, Platform, Screen, Styl, Text, View, cfx, ref, styles;
 
-ref = RN = require('react-native'), StyleSheet = ref.StyleSheet, Platform = ref.Platform;
+Platform = require('react-native').Platform;
 
-cfxify = require('./common/cfx').cfxify;
+ref = require('./common/cfx'), cfx = ref.cfx, Comps = ref.Comps, Styl = ref.Styl;
 
-ref1 = require('./common/cfx-components'), View = ref1.View, Text = ref1.Text;
+View = Comps.View, Text = Comps.Text;
 
-Screen = cfxify(require('./Screen'));
+Screen = cfx(require('./Screen'));
 
-styles = StyleSheet.create({
+Keyboard = cfx(require('./Keyboard'));
+
+styles = Styl({
   container: {
     flex: 1
   },
@@ -39,7 +41,7 @@ module.exports = function() {
     style: styles.screen
   }, Screen()), Text({
     style: styles.formulae
-  }, 'Formulae'), Text({
+  }, 'Formulae'), View({
     style: styles.keyboard
-  }, 'keyboard'));
+  }, Keyboard()));
 };

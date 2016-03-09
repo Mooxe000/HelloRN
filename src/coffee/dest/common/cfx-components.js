@@ -1,8 +1,12 @@
-var RN, Text, View, ref;
+var Text, TouchableHighlight, TouchableOpacity, View, cfxify, ref;
 
-ref = RN = require('react-native'), Text = ref.Text, View = ref.View;
+ref = require('react-native'), Text = ref.Text, View = ref.View, TouchableHighlight = ref.TouchableHighlight, TouchableOpacity = ref.TouchableOpacity;
+
+cfxify = require('./cfx').cfxify;
 
 module.exports = {
-  View: RN.createFactory(View),
-  Text: RN.createFactory(Text)
+  View: cfxify(View),
+  Text: cfxify(Text),
+  TouchableHighlight: cfxify(TouchableHighlight),
+  TouchableOpacity: cfxify(TouchableOpacity)
 };
