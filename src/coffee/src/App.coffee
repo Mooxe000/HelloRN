@@ -1,9 +1,10 @@
+echo = -> console.log arguments
 {
   Platform
 } = require 'react-native'
 
 {
-  cfx
+  cfxify
   Comp
   Comps
   Styl
@@ -14,9 +15,8 @@
   Text
 } = Comps
 
-Screen = cfx Comp.new require './Screen'
-# Formulae = cfx Comp.Get require './Formulae'
-Keyboard = cfx Comp.new require './Keyboard'
+Screen = cfxify require './Screen'
+Keyboard = cfxify require './Keyboard'
 
 styles = Styl
 

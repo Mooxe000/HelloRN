@@ -1,5 +1,5 @@
 {
-  cfx
+  cfxify
   Comp
   Comps
   Styl
@@ -10,7 +10,7 @@
   Text
 } = Comps
 
-Key = cfx Comp.new require './Key'
+Key = cfxify require './Key'
 
 styles = Styl
 

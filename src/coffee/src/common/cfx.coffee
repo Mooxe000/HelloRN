@@ -12,11 +12,12 @@ Styl = RN.StyleSheet.create
 Comp =
   reg: RN.AppRegistry.registerComponent
   new: (Render) ->
-    class Comp extends Component
+    class newComponent extends Component
       render: ->
         Render.call @
         , @props, @state
-    Comp
+
+cfxify = (Render) -> cfx Comp.new Render
 
 Comps =
   View: cfx View
@@ -24,9 +25,8 @@ Comps =
   TouchableHighlight: cfx TouchableHighlight
   TouchableOpacity: cfx TouchableOpacity
 
-
-
 exports.cfx = cfx
 exports.Styl = Styl
 exports.Comp = Comp
 exports.Comps = Comps
+exports.cfxify = cfxify
