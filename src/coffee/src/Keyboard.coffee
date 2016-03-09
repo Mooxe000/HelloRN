@@ -10,7 +10,7 @@
   Text
 } = Comps
 
-Key = cfxify require './Key'
+Key = require './Key'
 
 styles = Styl
 
@@ -21,7 +21,7 @@ styles = Styl
     flex: 1
     flexDirection: 'row'
 
-module.exports = ->
+module.exports = cfxify ->
 
   View style: styles.keyboard
   ,

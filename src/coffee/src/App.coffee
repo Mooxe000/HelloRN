@@ -4,7 +4,6 @@ echo = -> console.log arguments
 } = require 'react-native'
 
 {
-  cfxify
   Comp
   Comps
   Styl
@@ -15,8 +14,9 @@ echo = -> console.log arguments
   Text
 } = Comps
 
-Screen = cfxify require './Screen'
-Keyboard = cfxify require './Keyboard'
+Screen = require './Screen'
+Formulae = require './Formulae'
+Keyboard = require './Keyboard'
 
 styles = Styl
 
@@ -51,8 +51,8 @@ module.exports = ->
     View style: styles.screen
     , Screen()
   ,
-    Text style: styles.formulae
-    , 'Formulae'
+    View style: styles.formulae
+    , Formulae()
   ,
     View style: styles.keyboard
     , Keyboard()

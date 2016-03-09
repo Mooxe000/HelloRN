@@ -1,4 +1,5 @@
 {
+  cfxify
   Comps
   Styl
 } = require './common/cfx'
@@ -13,7 +14,7 @@ styles = Styl
     fontSize: 70
     fontWeight: '200'
 
-module.exports = ->
+module.exports = cfxify ->
 
   Text style: styles.screen
   , 1000
