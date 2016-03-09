@@ -37,3 +37,5 @@ android
 ios
 .flowconfig
 .watchmanconfig
+
+src/**/dest

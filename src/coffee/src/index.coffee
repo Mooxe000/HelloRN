@@ -1,9 +1,5 @@
-{
-  AppRegistry
-} = RN = require 'react-native'
-
+{ Comp } = require './common/cfx'
 App = require './App'
 
-AppRegistry
-.registerComponent 'HelloRN'
-, -> App
+Comp.reg 'HelloRN'
+, -> Comp.new App

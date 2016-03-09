@@ -1,9 +1,20 @@
-Render = require './ScreenRender'
-{ Component } = require 'react'
+{
+  Comps
+  Styl
+} = require './common/cfx'
+{
+  Text
+} = Comps
 
-class Screen extends Component
-  render: ->
-    Render.call @
-    , @props, @state
+styles = Styl
 
-module.exports = Screen
+  screen:
+    color: '#190d08'
+    fontSize: 70
+    fontWeight: '200'
+
+module.exports = ->
+
+  Text style: styles.screen
+  , 1000
+  # , 'state.displayScreen'
