@@ -1,10 +1,11 @@
 echo = -> console.log arguments
+{ assign } = Object
 
 {
   cfxify
   Comps
   Styl
-} = require './common/cfx'
+} = require '../common/cfx'
 
 {
   Text
@@ -75,7 +76,7 @@ getOperatorStyles = (classOperation) ->
       backgroundColor: '#cb7dc9'
       paddingBottom: 3
 
-  Object.assign buttonOperator.basic
+  assign buttonOperator.basic
   , buttonOperator[classOperation]
 
 getActionStyles = (classOperation) ->
@@ -98,7 +99,7 @@ getActionStyles = (classOperation) ->
       borderColor: '#9ed8a6'
       borderWidth: 1
 
-  Object.assign buttonAction.basic
+  assign buttonAction.basic
   , buttonAction[classOperation]
 
 getActionButtonStyles = (classOperation) ->
@@ -116,7 +117,7 @@ getActionButtonStyles = (classOperation) ->
       paddingBottom: 3
       color: '#9ed8a6'
 
-  Object.assign buttonText.basic
+  assign buttonText.basic
   , buttonText[classOperation]
 
 module.exports = cfxify ->

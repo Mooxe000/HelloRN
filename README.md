@@ -16,8 +16,12 @@ echo "alias rn-upgrade='yes | react-native upgrade && git checkout -- .gitignore
 # fish
 echo "alias rn-upgrade 'yes | react-native upgrade; git checkout -- .gitignore'" >> ~/.config/fish/config.fish
 
+rn-upgrade
+
+npm start --reset-cache
+
 gulp
 
-react-native run-ios
+simlator && react-native run-ios
 react-native run-android
 ```

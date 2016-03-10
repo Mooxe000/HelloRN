@@ -6,10 +6,13 @@ cnpm install --save \
 cnpm install --save-dev \
   coffee-script \
   ddeyes \
-  # lodash \
   shelljs \
   build-module-task \
   gulp \
   gulp-util \
   gulp-coffee \
   run-sequence
+
+  # lodash \
+  # bluebird
+  # bignumber.js

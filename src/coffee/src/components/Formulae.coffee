@@ -2,7 +2,8 @@
   cfxify
   Comps
   Styl
-} = require './common/cfx'
+} = require '../common/cfx'
+{ assign } = Object
 
 {
   Text
@@ -43,7 +44,7 @@ getFormulaStyles = (operator) ->
     divide:
       backgroundColor: '#cb7dc9'
 
-  Object.assign button.basic
+  assign button.basic
   , button[operator]
 
 module.exports = cfxify ->

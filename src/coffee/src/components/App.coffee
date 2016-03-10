@@ -7,7 +7,7 @@ echo = -> console.log arguments
   Comp
   Comps
   Styl
-} = require './common/cfx'
+} = require '../common/cfx'
 
 {
   View
