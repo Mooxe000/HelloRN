@@ -11,8 +11,12 @@ cnpm install --save-dev \
   gulp \
   gulp-util \
   gulp-coffee \
-  run-sequence
-
-  # lodash \
+  run-sequence \
+  redux \
+  react-redux \
+  redux-thunk \
+  lodash.isarray \
+  lodash.isstring
+  # lodash
   # bluebird
   # bignumber.js
