@@ -2,7 +2,7 @@
   cfxify
   Comps
   Styl
-} = require '../common/cfx'
+} = require '../../../common/cfx'
 {
   Text
 } = Comps

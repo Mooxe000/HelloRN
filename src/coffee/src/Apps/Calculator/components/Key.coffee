@@ -5,7 +5,7 @@ echo = -> console.log arguments
   cfxify
   Comps
   Styl
-} = require '../common/cfx'
+} = require '../../../common/cfx'
 
 {
   Text

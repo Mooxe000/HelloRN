@@ -1,5 +1,6 @@
 { Comp } = require './common/cfx'
-App = require './components/App'
+App =
+  calculator: require './Apps/Calculator/components/App'
 
 Comp.reg 'HelloRN'
-, -> Comp.new App
+, -> Comp.new App.calculator
