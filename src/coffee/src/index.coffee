@@ -1,4 +1,5 @@
 { Comp } = require './common/cfx'
+
 App =
   calculator: require './Apps/Calculator/components/App'
 
