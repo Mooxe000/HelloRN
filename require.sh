@@ -17,7 +17,10 @@ cnpm install --save-dev \
   lodash.isarray \
   lodash.isstring \
   hoist-non-react-statics \
-  lodash
+  lodash \
+  gulp-babel \
+  babel-preset-es2015 \
+  babel-preset-stage-2
   # lodash
   # bluebird
   # bignumber.js
