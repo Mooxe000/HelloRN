@@ -4,12 +4,8 @@
   applyMiddleware
   combineReducers
 } = require 'redux'
-{
-  Provider
-} = cfx require 'react-redux'
-{
-  thunk
-} = require 'redux-thunk'
+{ Provider } = cfx require 'react-redux'
+{ thunk } = require 'redux-thunk'
 { cfx } = require '../../../common/cfx'
 
 reducers = require '../reducers'

@@ -3,10 +3,13 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node node_modules/react-native/local-cli/cli.js start"
+    "clean": "rm -rf android/ ios/ .flowconfig .watchmanconfig node_modules/",
+    "start": "npm cache clean; node node_modules/react-native/local-cli/cli.js start"
   },
   "dependencies": {
-    "react-native": "^0.21.0"
+    "react-native": "^0.21.0",
+    "redux": "^3.3.1",
+    "redux-thunk": "^2.0.1"
   },
   "devDependencies": {
     "build-module-task": "0.0.2",
@@ -15,12 +18,10 @@
     "gulp": "^3.9.1",
     "gulp-coffee": "^2.3.1",
     "gulp-util": "^3.0.7",
+    "hoist-non-react-statics": "^1.0.5",
+    "lodash": "^4.6.1",
     "lodash.isarray": "^4.0.0",
     "lodash.isstring": "^4.0.1",
-    "react": "^0.14.7",
-    "react-redux": "^4.4.0",
-    "redux": "^3.3.1",
-    "redux-thunk": "^2.0.1",
     "run-sequence": "^1.1.5",
     "shelljs": "^0.6.0"
   }

@@ -2,4 +2,4 @@ gulp = require 'gulp'
 
 module.exports = ->
 
-  gulp.watch 'src/**/*', [ 'coffee' ]
+  gulp.watch 'src/**/*', [ 'build' ]

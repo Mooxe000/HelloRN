@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
 cnpm install --save \
-  react-native
+  react-native \
+  redux \
+  redux-thunk
 
 cnpm install --save-dev \
   coffee-script \
@@ -12,11 +14,10 @@ cnpm install --save-dev \
   gulp-util \
   gulp-coffee \
   run-sequence \
-  redux \
-  react-redux \
-  redux-thunk \
   lodash.isarray \
-  lodash.isstring
+  lodash.isstring \
+  hoist-non-react-statics \
+  lodash
   # lodash
   # bluebird
   # bignumber.js

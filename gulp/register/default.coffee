@@ -5,4 +5,4 @@ module.exports = ->
 
   # echo 'Hello World!!!'
 
-  runSequence 'coffee', 'watch'
+  runSequence 'build', 'watch'

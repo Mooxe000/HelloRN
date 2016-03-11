@@ -38,4 +38,4 @@ ios
 .flowconfig
 .watchmanconfig
 
-src/**/dest
+dest
