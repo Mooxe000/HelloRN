@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "clean": "rm -rf android/ ios/ .flowconfig .watchmanconfig node_modules/",
-    "start": "npm cache clean; node node_modules/react-native/local-cli/cli.js start"
+    "start": "npm cache clean; node node_modules/react-native/local-cli/cli.js start",
+    "updateSub": "git submodule foreach --recursive git reset --hard; git submodule foreach --recursive git clean -fd; git submodule foreach git pull"
   },
   "dependencies": {
     "react-native": "^0.21.0",
