@@ -1,12 +1,12 @@
 { assign } = Object
-{ cfxify } = require '../../../common/cfx'
-{ Component } = React = require 'react-native'
-
-{ bindActionCreators } = require 'redux'
+{
+  cfxify
+  cfx
+  connect
+} = require '../../../common/cfx'
 
 Counter = require '../components/Counter'
 counterActions = require '../actions/CounterActions'
-{ connect } = require '../../../libs/react-redux/index'
 
 CounterApp = cfxify ->
   {
@@ -19,10 +19,6 @@ CounterApp = cfxify ->
     , counter: state.count
   )
 
-module.exports = connect(
-  (state) ->
-    state: state.counter
-  (dispatch) ->
-    actions:
-      bindActionCreators counterActions, dispatch
-) CounterApp
+module.exports = cfx connect 'counter'
+  , counterActions
+  , CounterApp
