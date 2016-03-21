@@ -22,6 +22,6 @@ store = createStoreWithMiddleware reducer
 
 module.exports = cfxify ->
 
-  Provider store: store
-  ,
-    CounterApp()
+  # Provider store: store
+  # ,
+  CounterApp()

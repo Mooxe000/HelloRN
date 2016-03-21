@@ -2,8 +2,9 @@
 
 import React, { Component } from 'react-native';
 import {bindActionCreators} from 'redux';
-import Counter from '../components/counter';
-import * as counterActions from '../actions/counterActions';
+import Counter from '../../Counter/components/Counter';
+// import * as counterActions from '../actions/counterActions';
+import * as counterActions from '../../Counter/actions/CounterActions';
 import { connect } from '../../../libs/react-redux/index.js';
 
 // @connect(state => ({

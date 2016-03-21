@@ -3,7 +3,8 @@ import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { Provider } from '../../../libs/react-redux/index.js';
 import thunk from 'redux-thunk';
 
-import * as reducers from '../reducers';
+// import * as reducers from '../reducers';
+import * as reducers from '../../Counter/reducers';
 import CounterApp from './counterApp';
 
 const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);

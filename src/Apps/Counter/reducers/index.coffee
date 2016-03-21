@@ -1,3 +1,3 @@
 counter = require './Counter'
 
-module.counter = counter
+exports.counter = counter

@@ -11,12 +11,12 @@ counter = (
   switch action.type
     when types.INCREMENT
       return (
-        assign state
+        assign {}, state
         , count: state.count + 1
       )
     when types.DECREMENT
       return (
-        assign state
+        assign {}, state
         , count: state.count - 1
       )
     else return state

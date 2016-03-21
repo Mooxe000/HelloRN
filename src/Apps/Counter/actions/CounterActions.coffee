@@ -1,7 +1,7 @@
 types = require './ActionTypes'
 
 module.exports =
-  increment:
+  increment: ->
     type: types.INCREMENT
-  decrement:
+  decrement: ->
     type: types.DECREMENT

@@ -29,8 +29,8 @@ module.exports = cfxify ->
 
   {
     counter
-    # increment
-    # decrement
+    increment
+    decrement
   } = @props
 
   View style: styles.root
@@ -39,14 +39,14 @@ module.exports = cfxify ->
     , counter
   ,
     TouchableOpacity
-      # onPress: increment
+      onPress: increment
       style: styles.button
     ,
       Text {}
       , 'up'
   ,
     TouchableOpacity
-      # onPress: decrement
+      onPress: decrement
       style: styles.button
     ,
       Text {}
