@@ -5,8 +5,6 @@
   Provider
 } = require '../../../common/cfx'
 
-{ Component } = React = require 'react-native'
-
 reducers = require '../reducers/index'
 store = createStore reducers
 
