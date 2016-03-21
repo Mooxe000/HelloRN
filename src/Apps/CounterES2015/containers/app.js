@@ -5,7 +5,8 @@ import thunk from 'redux-thunk';
 
 // import * as reducers from '../reducers';
 import * as reducers from '../../Counter/reducers';
-import CounterApp from './counterApp';
+import CounterApp from '../../Counter/containers/CounterApp';
+// import CounterApp from './counterApp';
 
 const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
 const reducer = combineReducers(reducers);
