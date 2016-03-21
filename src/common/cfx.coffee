@@ -13,6 +13,8 @@ Comp =
   reg: RN.AppRegistry.registerComponent
   new: (Render) ->
     class newComponent extends Component
+      counstructor: (props) ->
+        super props
       render: ->
         Render.call @
         , @props, @state

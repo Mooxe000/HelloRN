@@ -1,11 +1,11 @@
 { Comp } = require './common/cfx'
 
 App =
-  calculator: require './Apps/Calculator/components/App'
-  counter: require './Apps/Counter/components/Counter'
+  calculator: Comp.new require './Apps/Calculator/components/App'
+  # counter: Comp.new require './Apps/Counter/containers/App'
+  counter: (require './Apps/CounterES2015/containers/app').default
 
 Comp.reg 'HelloRN'
-, -> Comp.new(
+, ->
   # App.calculator
   App.counter
-)

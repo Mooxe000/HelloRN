@@ -10,6 +10,16 @@ module.exports = ->
   # .on 'error', gutil.log
   .pipe gulp.dest './dest'
 
+  gulp.src './src/Apps/**/*.js'
+  .pipe babel
+    babelrc: false
+    presets: [
+      'es2015'
+      'stage-2'
+      'react'
+    ]
+  .pipe gulp.dest './dest/Apps'
+
   gulp.src './src/libs/react-redux/src/**/*.js'
   .pipe babel
     babelrc: false

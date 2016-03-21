@@ -1,4 +1,4 @@
-types = require '../actions/ActionTypes.coffee'
+types = require '../actions/ActionTypes'
 { assign } = Object
 
 initialState = count: 0

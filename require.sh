@@ -20,7 +20,8 @@ cnpm install --save-dev \
   lodash \
   gulp-babel \
   babel-preset-es2015 \
-  babel-preset-stage-2
+  babel-preset-stage-2 \
+  babel-preset-react
   # lodash
   # bluebird
   # bignumber.js

@@ -1,7 +1,7 @@
 {
-  Comp
   Comps
   Styl
+  cfxify
 } = require '../../../common/cfx'
 
 {
@@ -25,21 +25,18 @@ styles = Styl
     justifyContent: 'center'
     margin: 3
 
-module.exports = ->
+module.exports = cfxify ->
 
-  # constructor: (props) ->
-  #   super props
-
-    # {
-    #   counter
-    #   increment
-    #   decrement
-    # } = @props
+  {
+    counter
+    # increment
+    # decrement
+  } = @props
 
   View style: styles.root
   ,
     Text {}
-    , 'counter'
+    , counter
   ,
     TouchableOpacity
       # onPress: increment

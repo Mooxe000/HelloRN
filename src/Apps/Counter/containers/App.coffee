@@ -1,14 +1,17 @@
-{ Component } = require 'react-native'
+{
+  cfx
+  cfxify
+  # Comp
+} = require '../../../common/cfx'
 {
   createStore
   applyMiddleware
   combineReducers
 } = require 'redux'
-{ Provider } = cfx require 'react-redux'
-{ thunk } = require 'redux-thunk'
-{ cfx } = require '../../../common/cfx'
+thunk = require 'redux-thunk'
+{ Provider } = cfx require '../../../libs/react-redux/index'
 
-reducers = require '../reducers'
+reducers = require '../reducers/index'
 CounterApp = require './CounterApp'
 
 createStoreWithMiddleware = (
@@ -17,10 +20,8 @@ createStoreWithMiddleware = (
 reducer = combineReducers reducers
 store = createStoreWithMiddleware reducer
 
-class App extends Component
-  render: ->
-    Provider store: store
-    ,
-      CounterApp()
+module.exports = cfxify ->
 
-module.exports = App
+  Provider store: store
+  ,
+    CounterApp()
