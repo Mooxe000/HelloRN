@@ -1,4 +1,3 @@
-dd = require 'ddeyes'
 _ =
   isString: require 'lodash.isstring'
   isArray: require 'lodash.isarray'
