@@ -1,6 +1,7 @@
 ###
 # React
 ###
+{ assign } = Object
 {
   Text
   View
@@ -15,15 +16,45 @@ Styl = RN.StyleSheet.create
 
 Comp =
   reg: RN.AppRegistry.registerComponent
-  new: (Render) ->
+  new: (component) ->
+
+    componentObj = {}
+
+    if typeof component is 'function'
+
+      componentObj.render = component
+
+    else if typeof component is 'object'
+
+      return unless component.render
+      componentObj = assign componentObj, component
+
+    else return
+
     class newComponent extends Component
+
       counstructor: (props) ->
         super props
-      render: ->
-        Render.call @
-        , @props, @state
+        if componentObj.counstructor
+          componentObj.counstructor
+          .call @, @props, @state
+        @
 
-cfxify = (Render) -> cfx Comp.new Render
+      for k, v of componentObj
+        continue if (
+          k is 'render' or
+          k is 'counstructor'
+        )
+        if typeof v is 'function'
+          @::[k] = v.call @, @props, @state
+        else
+          @::[k] = v
+
+      render: ->
+        componentObj.render.call @, @props, @state
+
+cfxify = (component) ->
+  cfx Comp.new component
 
 Comps =
   View: cfx View
@@ -41,12 +72,12 @@ Comps =
   bindActionCreators
 } = require 'redux'
 
-thunk = (
-  require 'redux-thunk'
-).default
+thunk = require 'redux-thunk'
+logger = require 'redux-logger'
 
 createStoreWithMiddleware = (
-  applyMiddleware thunk
+  applyMiddleware thunk.default
+  , logger()
 ) createStore
 
 ReactRedux = require '../libs/react-redux/index'

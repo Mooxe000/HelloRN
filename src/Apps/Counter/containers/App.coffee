@@ -1,6 +1,4 @@
 {
-  cfx
-  cfxify
   createStore
   Provider
 } = require '../../../common/cfx'

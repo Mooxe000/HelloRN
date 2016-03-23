@@ -3,9 +3,13 @@
 App =
   calculator: require './Apps/Calculator/components/App'
   counter: require './Apps/Counter/containers/App'
+  navigator: require './Apps/Navigator/es6/app'
 
 Comp.reg 'HelloRN'
-, -> Comp.new(
-  # App.calculator
-  App.counter
-)
+
+, -> App.navigator.default
+
+# , -> Comp.new(
+#   # App.calculator
+#   App.counter
+# )

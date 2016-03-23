@@ -15,6 +15,7 @@ module.exports = ->
     babelrc: false
     presets: [
       'es2015'
+      'stage-0'
       'stage-2'
       'react'
     ]
@@ -25,6 +26,7 @@ module.exports = ->
     babelrc: false
     presets: [
       'es2015'
+      'stage-0'
       'stage-2'
     ]
   .pipe gulp.dest './dest/libs/react-redux'
