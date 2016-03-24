@@ -1,8 +1,14 @@
 {
   cfxify
+  Comps
 } = require '../../../common/cfx'
+{
+  View
+  Text
+  TouchableOpacity
+} = Comps
 
-FirstComponent = cfxify
+SecondPageComponent = cfxify
 
   constructor: ->
     @USER_MODELS =
@@ -26,15 +32,18 @@ FirstComponent = cfxify
 
   render: ->
 
-    View style:
-      backgroundColor: '#f9f9f9'
-      flex: 1
+    View
+      style:
+        backgroundColor: '#f9f9f9'
+        flex: 1
     ,
       Text {}
-      , SecondPageComponent
+      , 'SecondPageComponent'
     ,
       TouchableOpacity
         onPress: @_pressButton.bind @
       ,
         Text {}
         , '返回'
+
+module.exports = SecondPageComponent

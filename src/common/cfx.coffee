@@ -7,6 +7,7 @@
   View
   TouchableHighlight
   TouchableOpacity
+  Navigator
 } = RN = require 'react-native'
 
 { Component } = require 'react'
@@ -33,22 +34,22 @@ Comp =
 
     class newComponent extends Component
 
-      counstructor: (props) ->
+      constructor: (props) ->
         super props
-        if componentObj.counstructor
-          componentObj.counstructor
+        if componentObj.constructor
+          componentObj.constructor
           .call @, @props, @state
         @
 
       for k, v of componentObj
         continue if (
           k is 'render' or
-          k is 'counstructor'
+          k is 'constructor'
         )
-        if typeof v is 'function'
-          @::[k] = v.call @, @props, @state
-        else
-          @::[k] = v
+
+        @::[k] = ->
+          componentObj._pressButton
+          .call @, @props, @state
 
       render: ->
         componentObj.render.call @, @props, @state
@@ -61,6 +62,7 @@ Comps =
   Text: cfx Text
   TouchableHighlight: cfx TouchableHighlight
   TouchableOpacity: cfx TouchableOpacity
+  Navigator: cfx Navigator
 
 ###
 # Redux

@@ -1,6 +1,14 @@
 {
   cfxify
+  Comps
 } = require '../../../common/cfx'
+{
+  View
+  Text
+  TouchableOpacity
+} = Comps
+
+SecondPageComponent = require './Second'
 
 FirstComponent = cfxify
 
