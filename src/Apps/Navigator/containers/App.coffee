@@ -25,7 +25,7 @@ SampleComponent = cfxify ->
     renderScene: (router, navigator) ->
       Component = router.component
       if router.component
-        return Component do ->
+        Component do ->
           assign {}, router.params
           , { navigator }
 

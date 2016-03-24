@@ -47,9 +47,12 @@ Comp =
           k is 'constructor'
         )
 
-        @::[k] = ->
-          componentObj._pressButton
-          .call @, @props, @state
+        if typeof v is 'function'
+          @::[k] = ->
+            componentObj._pressButton
+            .call @, @props, @state
+        else
+          @::[k] = v
 
       render: ->
         componentObj.render.call @, @props, @state

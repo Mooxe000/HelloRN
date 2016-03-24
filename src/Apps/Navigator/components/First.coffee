@@ -16,6 +16,7 @@ FirstComponent = cfxify
     @state =
       id: 1
       user: null
+    @
 
   _pressButton: ->
     self = @
@@ -49,7 +50,7 @@ FirstComponent = cfxify
         flex: 1
       ,
         Text {}
-        , FirstComponent
+        , 'FirstComponent'
       ,
         TouchableOpacity
           onPress: @_pressButton.bind @
