@@ -4,8 +4,7 @@ import React, {
   TouchableOpacity,
 } from "react-native";
 
-import SecondPageComponent from '../components/Second'
-// import SecondPageComponent from './second'
+import SecondPageComponent from './Second'
 
 class FirstComponent extends  React.Component{
 

@@ -30,3 +30,6 @@ module.exports = ->
       'stage-2'
     ]
   .pipe gulp.dest './dest/libs/react-redux'
+
+  gulp.src './src/**/images/**/*'
+  .pipe gulp.dest './dest'

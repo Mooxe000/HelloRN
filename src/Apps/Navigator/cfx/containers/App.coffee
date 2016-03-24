@@ -2,7 +2,7 @@
 {
   cfxify
   Comps
-} = require '../../../common/cfx'
+} = require '../../../../common/cfx'
 { Navigator } = require 'react-native'
 
 FirstComponent = require '../components/First'

@@ -2,7 +2,6 @@ import React, {
   Navigator
 } from "react-native";
 
-// import FirstComponent from './first'
 import FirstComponent from '../components/First'
 
 class SampleComponent extends React.Component{

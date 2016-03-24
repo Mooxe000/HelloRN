@@ -1,7 +1,7 @@
 {
   cfxify
   Comps
-} = require '../../../common/cfx'
+} = require '../../../../common/cfx'
 {
   View
   Text

@@ -3,7 +3,9 @@
 cnpm install --save \
   react-native \
   redux \
-  redux-thunk
+  redux-thunk \
+  redux-logger \
+  react-native-simple-router
 
 cnpm install --save-dev \
   coffee-script \
