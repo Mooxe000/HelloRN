@@ -11,11 +11,12 @@ App =
 
   explorer:
     jsx: require './Apps/Explorer/jsx/containers/App'
+    cfx: require './Apps/Explorer/cfx/containers/App'
 
 currentApp =
   # name: 'navigator'
   name: 'explorer'
-  # type: 'cfx'
+  type: 'cfx'
   # type: 'jsx'
 
 Comp.reg 'HelloRN'

@@ -7,7 +7,7 @@
 
 FirstComponent = require '../components/First'
 
-SampleComponent = cfxify ->
+SampleComponent = ->
 
   defaultName = 'FirstPageComponent'
   defaultComponent = FirstComponent
@@ -29,4 +29,4 @@ SampleComponent = cfxify ->
           assign {}, router.params
           , { navigator }
 
-module.exports = SampleComponent
+module.exports = cfxify SampleComponent

@@ -28,5 +28,5 @@ react-native run-android
 
 ### TODO
 
-* ROUTER
-  * [react-native-simple-router](https://github.com/react-native-simple-router-community/react-native-simple-router)
+* [react-native-simple-router](https://github.com/react-native-simple-router-community/react-native-simple-router)
+* [react-native-gifted-listview](https://github.com/FaridSafi/react-native-gifted-listview)

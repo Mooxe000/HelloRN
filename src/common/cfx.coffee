@@ -8,6 +8,7 @@
   TouchableHighlight
   TouchableOpacity
   Navigator
+  ListView
 } = RN = require 'react-native'
 
 { Component } = require 'react'
@@ -34,13 +35,6 @@ Comp =
 
     class newComponent extends Component
 
-      constructor: (props) ->
-        super props
-        if componentObj.constructor
-          componentObj.constructor
-          .call @, @props, @state
-        @
-
       for k, v of componentObj
         continue if (
           k is 'render' or
@@ -54,6 +48,13 @@ Comp =
         else
           @::[k] = v
 
+      constructor: (props) ->
+        super props
+        if componentObj.constructor
+          componentObj.constructor
+          .call @, @props, @state
+        @
+
       render: ->
         componentObj.render.call @, @props, @state
 
@@ -66,6 +67,7 @@ Comps =
   TouchableHighlight: cfx TouchableHighlight
   TouchableOpacity: cfx TouchableOpacity
   Navigator: cfx Navigator
+  ListView: cfx ListView
 
 ###
 # Redux

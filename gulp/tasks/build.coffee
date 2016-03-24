@@ -6,8 +6,9 @@ babel = require 'gulp-babel'
 module.exports = ->
 
   gulp.src './src/**/*.coffee'
-  .pipe coffee bare: true
-  # .on 'error', gutil.log
+  .pipe (
+    coffee bare: true
+  ).on 'error', gutil.log
   .pipe gulp.dest './dest'
 
   gulp.src './src/Apps/**/*.js'
