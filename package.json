@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "clean": "rm -rf ./android ./ios/ ./.flowconfig ./.watchmanconfig ./node_modules",
+    "clean": "rm -rf ./android ./ios/ ./.flowconfig ./.watchmanconfig",
     "start": "npm cache clean; node node_modules/react-native/local-cli/cli.js start",
     "gulp": "rm -rf ./dest; gulp",
     "updateSub": "git submodule foreach --recursive git reset --hard; git submodule foreach --recursive git clean -fd; git submodule foreach git pull"
@@ -11,9 +11,9 @@
   "dependencies": {
     "react": "^0.14.7",
     "react-native": "^0.22.2",
-    "react-native-simple-router": "^0.8.4",
     "react-native-gifted-listview": "0.0.13",
     "react-native-gifted-spinner": "0.0.3",
+    "react-native-simple-router": "^0.8.4",
     "redux": "^3.3.1",
     "redux-logger": "^2.6.1",
     "redux-thunk": "^2.0.1"
