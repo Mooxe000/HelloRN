@@ -5,7 +5,9 @@ cnpm install --save \
   redux \
   redux-thunk \
   redux-logger \
-  react-native-simple-router
+  react-native-simple-router \
+  react-native-gifted-listview \
+  react-native-gifted-spinner \
 
 cnpm install --save-dev \
   coffee-script \

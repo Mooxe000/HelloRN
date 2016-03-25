@@ -10,6 +10,8 @@ echo = -> console.log arguments
   TouchableOpacity
   Navigator
   ListView
+
+  Platform
 } = RN = require 'react-native'
 
 { Component } = require 'react'
@@ -45,6 +47,8 @@ Comp =
           k is 'render' or
           k is 'constructor'
         )
+
+        # echo "#{k}: #{typeof v}"
 
         if typeof v is 'function'
           @::[k] = ->
@@ -113,10 +117,11 @@ connect = (stateName, actions, Component) ->
 ###
 # React
 ###
-exports.cfx = cfx
 exports.Styl = Styl
 exports.Comp = Comp
 exports.Comps = Comps
+exports.Platform = Platform
+exports.cfx = cfx
 exports.cfxify = cfxify
 ###
 # Redux

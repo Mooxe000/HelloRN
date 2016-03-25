@@ -21,12 +21,12 @@ currentApp =
   # name: 'navigator'
   # name: 'explorer'
   name: 'giftedListView'
-  # type: 'cfx'
-  type: 'jsx'
+  type: 'cfx'
+  # type: 'jsx'
 
 Comp.reg 'HelloRN'
 , ->
-  currentApp.type = 'cfx' unless App[currentApp.type]
+  currentApp.type = 'cfx' unless App[currentApp.name][currentApp.type]
   unless App[currentApp.name][currentApp.type]
     if App[currentApp.name].cfx
       echo 1
