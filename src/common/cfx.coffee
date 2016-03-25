@@ -1,3 +1,4 @@
+echo = -> console.log arguments
 ###
 # React
 ###
@@ -14,6 +15,7 @@
 { Component } = require 'react'
 
 cfx = RN.createFactory
+# cfx = RN.createClass
 Styl = RN.StyleSheet.create
 
 Comp =
@@ -31,9 +33,12 @@ Comp =
       return unless component.render
       componentObj = assign componentObj, component
 
+    # TODO use throw error with error message
     else return
 
     class newComponent extends Component
+
+      waitToBinds = []
 
       for k, v of componentObj
         continue if (
@@ -45,6 +50,7 @@ Comp =
           @::[k] = ->
             componentObj._pressButton
             .call @, @props, @state
+          waitToBinds.push k
         else
           @::[k] = v
 
@@ -53,6 +59,8 @@ Comp =
         if componentObj.constructor
           componentObj.constructor
           .call @, @props, @state
+        for funcName in waitToBinds
+          @[funcName] = componentObj[funcName].bind @
         @
 
       render: ->

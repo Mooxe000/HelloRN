@@ -13,15 +13,20 @@ App =
     jsx: require './Apps/Explorer/jsx/containers/App'
     cfx: require './Apps/Explorer/cfx/containers/App'
 
+  giftedListView:
+    cfx: require './Apps/GiftedListView/cfx/containers/App'
+    jsx: require './Apps/GiftedListView/jsx/containers/App'
+
 currentApp =
   # name: 'navigator'
-  name: 'explorer'
-  type: 'cfx'
-  # type: 'jsx'
+  # name: 'explorer'
+  name: 'giftedListView'
+  # type: 'cfx'
+  type: 'jsx'
 
 Comp.reg 'HelloRN'
 , ->
-  currentApp.type = 'cfx' unless currentApp.type
+  currentApp.type = 'cfx' unless App[currentApp.type]
   unless App[currentApp.name][currentApp.type]
     if App[currentApp.name].cfx
       echo 1
