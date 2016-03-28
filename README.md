@@ -12,9 +12,19 @@ cd HelloRN
 yes | react-native upgrade; git checkout -- .gitignore
 
 # bash
-echo "alias rn-upgrade='yes | react-native android && yes | react-native upgrade && git checkout -- .gitignore && git checkout -- index.android.js'" >> ~/.bashrc
+echo "alias rn-upgrade=' \
+  yes | react-native android && \
+  yes | react-native upgrade && \
+  git checkout -- .gitignore && \
+  git checkout -- index.android.js && \
+  mkdir -p ./ios/Resources'" >> ~/.bashrc
 # fish
-echo "alias rn-upgrade 'yes | react-native android; yes | react-native upgrade; git checkout -- .gitignore; git checkout -- index.android.js'" >> ~/.config/fish/config.fish
+echo "alias rn-upgrade '\
+  yes | react-native android; \
+  yes | react-native upgrade; \
+  git checkout -- .gitignore; \
+  git checkout -- index.android.js \
+  mkdir -p ./ios/Resources'" >> ~/.config/fish/config.fish
 
 rn-upgrade
 

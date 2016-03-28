@@ -17,13 +17,19 @@ App =
     cfx: require './Apps/GiftedListView/cfx/containers/App'
     jsx: require './Apps/GiftedListView/jsx/containers/App'
 
+  noder:
+    jsx: require './Apps/Noder/jsx/index'
+
 currentApp =
-  name: 'counter'
+  # name: 'calculator'
+  # name: 'counter'
   # name: 'navigator'
   # name: 'explorer'
   # name: 'giftedListView'
+  name: 'noder'
+
   # type: 'cfx'
-  # type: 'jsx'
+  type: 'jsx'
 
 Comp.reg 'HelloRN'
 , ->
