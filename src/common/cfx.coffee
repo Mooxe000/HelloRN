@@ -16,8 +16,8 @@ echo = -> console.log arguments
 
 { Component } = require 'react'
 
-cfx = RN.createFactory
-# cfx = RN.createClass
+cfxify = RN.createFactory
+# cfxify = RN.createClass
 Styl = RN.StyleSheet.create
 
 Comp =
@@ -70,19 +70,19 @@ Comp =
       render: ->
         componentObj.render.call @, @props, @state
 
-cfxify = (component) ->
-  cfx Comp.new component
+cfx = (component) ->
+  cfxify Comp.new component
 
 Comps =
-  View: cfx View
-  Text: cfx Text
-  Image: cfx Image
+  View: cfxify View
+  Text: cfxify Text
+  Image: cfxify Image
 
-  Navigator: cfx Navigator
-  ListView: cfx ListView
+  Navigator: cfxify Navigator
+  ListView: cfxify ListView
 
-  TouchableHighlight: cfx TouchableHighlight
-  TouchableOpacity: cfx TouchableOpacity
+  TouchableHighlight: cfxify TouchableHighlight
+  TouchableOpacity: cfxify TouchableOpacity
 
 ###
 # Redux
@@ -135,5 +135,5 @@ exports.cfxify = cfxify
 # Redux
 ###
 exports.createStore = createStore
-exports.Provider = cfx ReactRedux.Provider
+exports.Provider = cfxify ReactRedux.Provider
 exports.connect = connect

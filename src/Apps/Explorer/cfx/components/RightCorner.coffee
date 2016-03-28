@@ -2,7 +2,7 @@
   Styl
   Alert
   Comps
-  cfxify
+  cfx
 } = require '../../../../common/cfx'
 {
   View
@@ -17,7 +17,7 @@ styles = Styl
     padding: 5
     marginRight: 5
 
-RightCorner = cfxify
+RightCorner = cfx
 
   onPress: ->
 

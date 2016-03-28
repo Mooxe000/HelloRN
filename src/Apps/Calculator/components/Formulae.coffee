@@ -1,5 +1,5 @@
 {
-  cfxify
+  cfx
   Comps
   Styl
 } = require '../../../common/cfx'
@@ -47,7 +47,7 @@ getFormulaStyles = (operator) ->
   assign button.basic
   , button[operator]
 
-module.exports = cfxify ->
+module.exports = cfx ->
 
   View style: styles.formulae
   ,

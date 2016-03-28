@@ -1,7 +1,6 @@
 echo = -> console.log arguments
 {
   cfx
-  cfxify
   Comps
   Styl
 } = require '../../../../common/cfx'
@@ -103,7 +102,7 @@ getFeatures = (Page) -> [
       rightCorner: RightCorner
 ]
 
-Page = cfxify
+Page = cfx
 
   constructor: ->
 

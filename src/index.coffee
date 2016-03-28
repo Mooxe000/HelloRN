@@ -18,10 +18,11 @@ App =
     jsx: require './Apps/GiftedListView/jsx/containers/App'
 
 currentApp =
+  name: 'counter'
   # name: 'navigator'
-  name: 'explorer'
+  # name: 'explorer'
   # name: 'giftedListView'
-  type: 'cfx'
+  # type: 'cfx'
   # type: 'jsx'
 
 Comp.reg 'HelloRN'

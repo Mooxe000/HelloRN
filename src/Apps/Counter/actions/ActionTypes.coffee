@@ -1,6 +1,4 @@
-km = require '../../../common/keyMirror'
-
-module.exports = km [
+module.exports = {
   'INCREMENT'
   'DECREMENT'
-]
+}

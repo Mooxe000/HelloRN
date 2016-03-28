@@ -8,7 +8,7 @@
 Counter = require '../components/Counter'
 counterActions = require '../actions/CounterActions'
 
-CounterApp = cfxify ->
+CounterApp = cfx ->
   {
     state
     actions
@@ -19,6 +19,6 @@ CounterApp = cfxify ->
     , counter: state.count
   )
 
-module.exports = cfx connect 'counter'
+module.exports = cfxify connect 'counter'
   , counterActions
   , CounterApp

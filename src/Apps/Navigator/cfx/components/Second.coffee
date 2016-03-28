@@ -1,5 +1,5 @@
 {
-  cfxify
+  cfx
   Comps
 } = require '../../../../common/cfx'
 {
@@ -8,7 +8,7 @@
   TouchableOpacity
 } = Comps
 
-SecondPageComponent = cfxify
+SecondPageComponent = cfx
 
   constructor: ->
     @USER_MODELS =

@@ -1,5 +1,5 @@
 {
-  cfxify
+  cfx
   Comps
 } = require '../../../../common/cfx'
 {
@@ -10,7 +10,7 @@
 
 SecondPageComponent = require './Second'
 
-FirstComponent = cfxify
+FirstComponent = cfx
 
   constructor: ->
     @state =

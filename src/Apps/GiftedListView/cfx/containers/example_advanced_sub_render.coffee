@@ -1,5 +1,5 @@
 {
-  cfx
+  cfxify
   Comps
   Platform
 } = require '../../../../common/cfx'
@@ -9,7 +9,7 @@
   TouchableHighlight
 } = Comps
 
-GiftedSpinner = cfx require 'react-native-gifted-spinner'
+GiftedSpinner = cfxify require 'react-native-gifted-spinner'
 
 {
   customStyles

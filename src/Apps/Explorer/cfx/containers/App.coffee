@@ -6,7 +6,7 @@
 } = require '../../../../common/cfx'
 { Platform } = require 'react-native'
 
-Router = cfx (
+Router = cfxify (
   require 'react-native-simple-router'
 ).default
 # Page = (
@@ -34,4 +34,4 @@ if Platform.OS is 'android'
 
 
 Explorer = -> Router RouterConf
-module.exports = cfxify Explorer
+module.exports = cfx Explorer

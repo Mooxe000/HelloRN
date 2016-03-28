@@ -2,7 +2,7 @@
   PropTypes
   Comps
   Styl
-  cfxify
+  cfx
 } = require '../../../../common/cfx'
 {
   View
@@ -16,7 +16,7 @@ styles = Styl
   button:
     padding: 5
 
-LeftCorner = cfxify
+LeftCorner = cfx
 
   onPress: -> @props.toBack()
 

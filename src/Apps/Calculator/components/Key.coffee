@@ -2,7 +2,7 @@ echo = -> console.log arguments
 { assign } = Object
 
 {
-  cfxify
+  cfx
   Comps
   Styl
 } = require '../../../common/cfx'
@@ -120,7 +120,7 @@ getActionButtonStyles = (classOperation) ->
   assign buttonText.basic
   , buttonText[classOperation]
 
-module.exports = cfxify ->
+module.exports = cfx ->
 
   switch @props.keyType
 

@@ -11,7 +11,7 @@ echo = -> console.log arguments
   TouchableHighlight
 } = Comps
 
-GiftedListView = cfx require 'react-native-gifted-listview'
+GiftedListView = cfxify require 'react-native-gifted-listview'
 
 {
   customStyles
@@ -33,7 +33,7 @@ GiftedListView = cfx require 'react-native-gifted-listview'
   separatorView
 } = require './example_advanced_sub_render'
 
-Example = cfxify
+Example = cfx
 
   _onFetch: (
     page = 1

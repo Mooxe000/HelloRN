@@ -1,6 +1,6 @@
 { assign } = Object
 {
-  cfxify
+  cfx
   Comps
 } = require '../../../../common/cfx'
 { Navigator } = require 'react-native'
@@ -29,4 +29,4 @@ SampleComponent = ->
           assign {}, router.params
           , { navigator }
 
-module.exports = cfxify SampleComponent
+module.exports = cfx SampleComponent

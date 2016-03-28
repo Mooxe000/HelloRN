@@ -1,7 +1,7 @@
 {
   Comps
   Styl
-  cfxify
+  cfx
 } = require '../../../common/cfx'
 
 {
@@ -25,7 +25,7 @@ styles = Styl
     justifyContent: 'center'
     margin: 3
 
-module.exports = cfxify ->
+module.exports = cfx ->
 
   {
     counter

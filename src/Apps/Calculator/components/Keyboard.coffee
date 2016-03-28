@@ -1,5 +1,5 @@
 {
-  cfxify
+  cfx
   Comp
   Comps
   Styl
@@ -21,7 +21,7 @@ styles = Styl
     flex: 1
     flexDirection: 'row'
 
-module.exports = cfxify ->
+module.exports = cfx ->
 
   View style: styles.keyboard
   ,

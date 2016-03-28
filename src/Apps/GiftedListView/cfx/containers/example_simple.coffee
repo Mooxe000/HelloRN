@@ -11,7 +11,7 @@ echo = -> console.log arguments
   TouchableHighlight
 } = Comps
 
-GiftedListView = cfx require 'react-native-gifted-listview'
+GiftedListView = cfxify require 'react-native-gifted-listview'
 
 styles = Styl
   container:
@@ -24,7 +24,7 @@ styles = Styl
     padding: 10
     height: 44
 
-Example = cfxify
+Example = cfx
 
   _onFetch: (
     page = 1
