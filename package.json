@@ -9,6 +9,7 @@
     "updateSub": "git submodule foreach --recursive git reset --hard; git submodule foreach --recursive git clean -fd; git submodule foreach git pull"
   },
   "dependencies": {
+    "randomcolor": "^0.4.3",
     "react": "^0.14.7",
     "react-native": "^0.22.2",
     "react-native-gifted-listview": "0.0.13",

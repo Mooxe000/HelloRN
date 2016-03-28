@@ -19,8 +19,8 @@ App =
 
 currentApp =
   # name: 'navigator'
-  # name: 'explorer'
-  name: 'giftedListView'
+  name: 'explorer'
+  # name: 'giftedListView'
   type: 'cfx'
   # type: 'jsx'
 

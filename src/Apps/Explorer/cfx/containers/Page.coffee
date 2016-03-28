@@ -9,11 +9,10 @@ echo = -> console.log arguments
   Text
   View
   TouchableHighlight
-} = Comps
-{
-  Component
   ListView
-} = require 'react-native'
+} = Comps
+RN = require 'react-native'
+randomColor = require 'randomcolor'
 
 LeftCorner = (
   require '../../jsx/components/LeftCorner'
@@ -36,11 +35,7 @@ styles = Styl
     height: 1
     backgroundColor: '#CCCCCC'
 
-bgcRandom = Math.floor(
-  Math.random() * 16777215
-).toString 16 + ''
-
-features = [
+getFeatures = (Page) -> [
     method: 'toRoute'
     route:
       component: Page
@@ -61,7 +56,7 @@ features = [
       component: Page
       name: 'Random headerStyle'
       headerStyle:
-        backgroundColor: bgcRandom
+        backgroundColor: randomColor()
   ,
     method: 'toRoute'
     route:
@@ -69,7 +64,7 @@ features = [
       name: '(Android) Random StatusBar color'
       statusBarProps:
         animated: true
-        backgroundColor: bgcRandom
+        backgroundColor: randomColor()
   ,
     method: 'toRoute'
     route:
@@ -105,28 +100,28 @@ features = [
       rightCorner: RightCorner
 ]
 
-class Page extends Component
-  constructor: (props) ->
-    super props
+Page = cfxify
 
-    ds = new ListView.DataSource
-      rowHasChanged: (r1, r2) => r1 isnt r2
+  constructor: ->
 
-    feature = feature[0]
+    ds = new RN.ListView.DataSource
+      rowHasChanged: (r1, r2) -> r1 isnt r2
 
-    @state = dataSource: ds.cloneWithRows features
+    features = getFeatures Page
+
+    @state =
+      dataSource: ds.cloneWithRows features
+
     @selectedRow = {}
 
-    # for feature in features
-    #   @selectedRow[feature.route.name] =
-    #     @onPressRow.bind @, feature
-    #
-    # @renderRow = @renderRow.bind @
+    @onPressRow = (feature) ->
+      @props[feature.method] feature.route
+
+    for feature in features
+      @selectedRow[feature.route.name] =
+        @onPressRow.bind @, feature
 
     return
-
-  onPressRow: (feature) ->
-    @props[feature.method] feature.route
 
   renderRow: (rowData) ->
 
@@ -143,10 +138,11 @@ class Page extends Component
         View style: styles.separator
 
   render: ->
+
     View style: styles.container
     ,
-      Comps.ListView
+      ListView
         dataSource: @state.dataSource
-        randerRow: @renderRow
+        renderRow: @renderRow
 
 module.exports = Page

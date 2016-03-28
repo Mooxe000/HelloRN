@@ -9,10 +9,10 @@
 Router = cfx (
   require 'react-native-simple-router'
 ).default
-Page = (
-  require '../../jsx/containers/Page'
-).default
-# Page = require './Page'
+# Page = (
+#   require '../../jsx/containers/Page'
+# ).default
+Page = require './Page'
 
 styles = Styl
   header:
