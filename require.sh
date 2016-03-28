@@ -8,6 +8,7 @@ cnpm install --save \
   react-native-simple-router \
   react-native-gifted-listview \
   react-native-gifted-spinner \
+  randomcolor
 
 cnpm install --save-dev \
   coffee-script \

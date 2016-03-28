@@ -14,12 +14,15 @@ echo = -> console.log arguments
 RN = require 'react-native'
 randomColor = require 'randomcolor'
 
-LeftCorner = (
-  require '../../jsx/components/LeftCorner'
-).default
-RightCorner = (
-  require '../../jsx/components/RightCorner'
-).default
+# LeftCorner = (
+#   require '../../jsx/components/LeftCorner'
+# ).default
+# RightCorner = (
+#   require '../../jsx/components/RightCorner'
+# ).default
+
+LeftCorner = require '../components/LeftCorner'
+RightCorner = require '../components/RightCorner'
 
 styles = Styl
   container:

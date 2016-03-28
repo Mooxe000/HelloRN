@@ -6,12 +6,12 @@ echo = -> console.log arguments
 {
   Text
   View
-  TouchableHighlight
-  TouchableOpacity
+  Image
   Navigator
   ListView
 
-  Platform
+  TouchableHighlight
+  TouchableOpacity
 } = RN = require 'react-native'
 
 { Component } = require 'react'
@@ -76,10 +76,13 @@ cfxify = (component) ->
 Comps =
   View: cfx View
   Text: cfx Text
-  TouchableHighlight: cfx TouchableHighlight
-  TouchableOpacity: cfx TouchableOpacity
+  Image: cfx Image
+
   Navigator: cfx Navigator
   ListView: cfx ListView
+
+  TouchableHighlight: cfx TouchableHighlight
+  TouchableOpacity: cfx TouchableOpacity
 
 ###
 # Redux
@@ -120,9 +123,14 @@ connect = (stateName, actions, Component) ->
 exports.Styl = Styl
 exports.Comp = Comp
 exports.Comps = Comps
-exports.Platform = Platform
+
+exports.Alert = RN.Alert
+exports.Platform = RN.Platform
+exports.PropTypes = RN.PropTypes
+
 exports.cfx = cfx
 exports.cfxify = cfxify
+
 ###
 # Redux
 ###
