@@ -6,6 +6,7 @@ cnpm install --save \
   redux-thunk \
   redux-logger \
   redux-actions \
+  react-native-storage \
   react-native-simple-router \
   react-native-gifted-listview \
   react-native-gifted-spinner \
@@ -40,7 +41,8 @@ cnpm install --save-dev \
   babel-preset-es2015 \
   babel-preset-stage-0 \
   babel-preset-stage-2 \
-  babel-preset-react
+  babel-preset-react \
+  node-fetch
   # bluebird
   # bignumber.js
 

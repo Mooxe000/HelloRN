@@ -124,6 +124,7 @@ exports.Styl = Styl
 exports.Comp = Comp
 exports.Comps = Comps
 
+exports.RN = RN
 exports.Alert = RN.Alert
 exports.Platform = RN.Platform
 exports.PropTypes = RN.PropTypes

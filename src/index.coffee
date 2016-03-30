@@ -18,6 +18,8 @@ App =
     jsx: require './Apps/GiftedListView/jsx/containers/App'
 
   noder:
+    cfx: require './Apps/Noder/cfx/containers/App'
+    # cfx: require './Apps/Noder/cfx/containers/Component'
     jsx: require './Apps/Noder/jsx/index'
 
 currentApp =
@@ -28,8 +30,8 @@ currentApp =
   # name: 'giftedListView'
   name: 'noder'
 
-  # type: 'cfx'
-  type: 'jsx'
+  type: 'cfx'
+  # type: 'jsx'
 
 Comp.reg 'HelloRN'
 , ->

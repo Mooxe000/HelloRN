@@ -1,0 +1,5 @@
+module.exports = {
+  'STORE_TOPICS_REQUEST'
+  'STORE_TOPICS_FAILURE'
+  'STORE_TOPICS_SUCCESS'
+}
