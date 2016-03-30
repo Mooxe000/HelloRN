@@ -30,8 +30,8 @@ currentApp =
   # name: 'giftedListView'
   name: 'noder'
 
-  type: 'cfx'
-  # type: 'jsx'
+  # type: 'cfx'
+  type: 'jsx'
 
 Comp.reg 'HelloRN'
 , ->

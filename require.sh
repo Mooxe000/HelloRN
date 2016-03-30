@@ -52,10 +52,11 @@ rnpm install \
 rnpm install \
   react-native-camera@https://github.com/lwansbrough/react-native-camera.git
 
-rn-upgrade && \
+fish -lc 'rn-upgrade' && \
 mkdir -p ./ios/Resources && \
 rnpm link react-native-vector-icons && \
 rnpm link react-native-barcodescanner && \
 rnpm link react-native-camera && \
 rnpm link react-native-vibration && \
-rnpm link react-native-blur
+rnpm link react-native-blur && \
+npm run link
