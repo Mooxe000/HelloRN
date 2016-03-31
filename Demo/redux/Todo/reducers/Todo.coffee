@@ -1,6 +1,15 @@
+{
+  handleAction
+  handleActions
+} = require 'redux-actions'
+reduceReducers = require 'reduce-reducers'
 types = require '../constants/index'
+echo = console.log
 dd = require 'ddeyes'
 ___ = require '../../../../src/common/assign'
+{
+  mergeReduce
+} = require '../../../../src/common/reduxHelper'
 
 {
   Visibility
@@ -16,50 +25,35 @@ initialState =
   visibilityFilter: Visibility.SHOW_ALL
   todos: []
 
-visibilityFilter = (
+visibilityFilter = handleAction SET_VISIBILITY_FILTER
+, next: (
   state = Visbility.SHOW_ALL
   action
-) ->
-  {
-    payload
-  } = action
-  switch action.type
+) -> action.payload.filter
+# , throw
 
-    when SET_VISIBILITY_FILTER
-      return payload.filter
+todos = handleActions
 
-    else return state
+  ADD_TODO: (state, action) ->
+    ___ state
+    ,
+      text: action.payload.text
+      completed: false
 
-todos = (
-  state = []
-  action
-) ->
-  {
-    payload
-  } = action
-  switch action.type
+  COMPLETE_TODO: (state, action) ->
+    ___ [
+      state.slice 0, action.payload.index
+      ___ state[action.payload.index]
+      , completed: true
+      state.slice action.payload.index + 1
+    ]
 
-    when ADD_TODO
-      return ___ state
-      ,
-        text: payload.text
-        completed: false
+, []
 
-    when COMPLETE_TODO
-      return ___ [
-        state.slice 0, payload.index
-        ___ state[payload.index]
-        , completed: true
-        state.slice payload.index + 1
-      ]
-
-    else return state
-
-todoApp = (
-  state = initialState
-  action
-) ->
-  visibilityFilter: visibilityFilter state.visibilityFilter, action
-  todos: todos state.todos, action
+todoApp = mergeReduce {
+  visibilityFilter
+  todos
+}
+, initialState
 
 module.exports = todoApp

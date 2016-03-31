@@ -2,12 +2,18 @@
 echo = -> console.log arguments
 dd = require 'ddeyes'
 
-createStore = require '../helper'
+thunk = require 'redux-thunk'
+logger = require 'redux-logger'
+{
+  createStore
+} = require '../../../src/common/reduxHelper'
 
 reducers =
   todoApp: require './reducers/Todo'
 actions =
   todoApp: require './actions/Todo'
+
+VisibilityFilters = require './constants/Visibility'
 
 ###
     Flow
@@ -21,7 +27,13 @@ actions =
 
 #   init
 store = createStore reducers
-dd store.getState()
+# , [
+#   thunk.default
+#   logger()
+# ]
+
+unsubscribe = store.subscribe ->
+  dd store.getState()
 
 #   addTodo
 for text in [
@@ -31,9 +43,18 @@ for text in [
 ]
   store.dispatch actions.todoApp.addTodo
     text: text
-dd store.getState()
 
 #   completeTodo
 store.dispatch completeTodo
   index: 0
-dd store.getState()
+
+store.dispatch completeTodo
+  index: 1
+
+#   visibility
+store.dispatch setVisibilityFilter
+  filter:
+    VisibilityFilters
+    .SHOW_COMPLETED
+
+unsubscribe()

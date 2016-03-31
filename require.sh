@@ -6,18 +6,7 @@ cnpm install --save \
   redux-thunk \
   redux-logger \
   redux-actions \
-  react-native-storage \
-  react-native-simple-router \
-  react-native-gifted-listview \
-  react-native-gifted-spinner \
-  react-native-vector-icons \
-  react-native-vibration \
-  react-native-button \
-  react-native-scrollable-tab-view \
-  react-native-html-render \
-  react-native-blur \
-  react-native-barcodescanner@https://github.com/ideacreation/react-native-barcodescanner.git \
-  react-native-camera@https://github.com/lwansbrough/react-native-camera.git \
+  reduce-reducers \
   randomcolor \
   flux-standard-action \
   query-string \
@@ -46,17 +35,54 @@ cnpm install --save-dev \
   # bluebird
   # bignumber.js
 
-rnpm install \
-  react-native-barcodescanner@https://github.com/ideacreation/react-native-barcodescanner.git \
-&& \
-rnpm install \
-  react-native-camera@https://github.com/lwansbrough/react-native-camera.git
+fish -lc 'rn-upgrade'
+# && mkdir -p ./ios/Resources
 
-fish -lc 'rn-upgrade' && \
-mkdir -p ./ios/Resources && \
-rnpm link react-native-vector-icons && \
-rnpm link react-native-barcodescanner && \
-rnpm link react-native-camera && \
-rnpm link react-native-vibration && \
-rnpm link react-native-blur && \
+# rnpm install \
+#   react-native-vector-icons
+# rnpm install \
+#   react-native-barcodescanner
+# rnpm install \
+#   react-native-camera
+
+cnpm i --save \
+  react-native-vector-icons@https://github.com/oblador/react-native-vector-icons.git \
+  react-native-barcodescanner@https://github.com/ideacreation/react-native-barcodescanner.git \
+  react-native-camera@https://github.com/lwansbrough/react-native-camera.git \
+  react-native-storage \
+  react-native-simple-router \
+  react-native-gifted-listview \
+  react-native-gifted-spinner \
+  react-native-vibration \
+  react-native-button \
+  react-native-scrollable-tab-view \
+  react-native-html-render \
+  react-native-blur
+
+# Edit ./ios/HelloRN/Info.plist and Add these lines
+# <key>UIAppFonts</key>
+# <array>
+#   <string>Entypo.ttf</string>
+#   <string>EvilIcons.ttf</string>
+#   <string>FontAwesome.ttf</string>
+#   <string>Foundation.ttf</string>
+#   <string>Ionicons.ttf</string>
+#   <string>MaterialIcons.ttf</string>
+#   <string>Octicons.ttf</string>
+#   <string>Zocial.ttf</string>
+# </array>
+
+# Edit ./android/app/build.gradle
+# After line
+#   apply from: "react.gradle"
+# Add this line
+#   apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
+
+# rnpm link react-native-vector-icons
+# rnpm link react-native-barcodescanner
+# rnpm link react-native-camera
+# rnpm link react-native-vibration
+# rnpm link react-native-blur
+
+npm run link
 npm run link

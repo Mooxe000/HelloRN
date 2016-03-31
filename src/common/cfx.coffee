@@ -84,42 +84,6 @@ Comps =
   TouchableHighlight: cfxify TouchableHighlight
   TouchableOpacity: cfxify TouchableOpacity
 
-###
-# Redux
-###
-{
-  createStore
-  applyMiddleware
-  combineReducers
-  bindActionCreators
-} = require 'redux'
-
-thunk = require 'redux-thunk'
-logger = require 'redux-logger'
-
-createStoreWithMiddleware = (
-  applyMiddleware thunk.default
-  , logger()
-) createStore
-
-ReactRedux = require '../libs/react-redux/index'
-
-createStore = (reducers) ->
-  reducer = combineReducers reducers
-  createStoreWithMiddleware reducer
-
-connect = (stateName, actions, Component) ->
-  ReactRedux.connect(
-    (state) ->
-      state: state[stateName]
-    (dispatch) ->
-      actions:
-        bindActionCreators actions, dispatch
-  ) Component
-
-###
-# React
-###
 exports.Styl = Styl
 exports.Comp = Comp
 exports.Comps = Comps
@@ -131,10 +95,3 @@ exports.PropTypes = RN.PropTypes
 
 exports.cfx = cfx
 exports.cfxify = cfxify
-
-###
-# Redux
-###
-exports.createStore = createStore
-exports.Provider = cfxify ReactRedux.Provider
-exports.connect = connect
