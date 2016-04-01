@@ -7,6 +7,7 @@ types = require '../constants/index'
 echo = console.log
 dd = require 'ddeyes'
 ___ = require '../../../../src/common/assign'
+si = require '../../../../src/common/immutableHelper'
 {
   mergeReduce
 } = require '../../../../src/common/reduxHelper'
@@ -35,18 +36,17 @@ visibilityFilter = handleAction SET_VISIBILITY_FILTER
 todos = handleActions
 
   ADD_TODO: (state, action) ->
-    ___ state
-    ,
+    si.Array.push state
+    , [
       text: action.payload.text
       completed: false
+    ]
 
   COMPLETE_TODO: (state, action) ->
-    ___ [
-      state.slice 0, action.payload.index
-      ___ state[action.payload.index]
-      , completed: true
-      state.slice action.payload.index + 1
-    ]
+    si.Array.set state
+    , action.payload.index
+    , state[action.payload.index].merge
+      completed: true
 
 , []
 

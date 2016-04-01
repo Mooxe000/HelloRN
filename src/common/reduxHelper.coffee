@@ -1,8 +1,10 @@
+echo = console.log
 {
   createStore
   applyMiddleware
   combineReducers
 } = require 'redux'
+Immutable = require './immutableHelper'
 
 createStoreWithMiddleware = (pluginList) -> (
   applyMiddleware.apply @, pluginList
@@ -17,10 +19,18 @@ CreateStore = (reducers, pluginList = []) ->
 mergeReduce = (
   reduceMap
   defaultState
+  options
 ) ->
   unless defaultState
     throw new Error 'must be provided a default state.'
   (state = defaultState, action) ->
+    immutable =
+      unless options?.immutable?
+      then true
+      else
+        if options.immutable is false
+        then false else true
+    state = Immutable.init state if immutable
     r = {}
     for reduceName, reduce of reduceMap
       r[reduceName] = reduce state[reduceName], action

@@ -1,7 +1,4 @@
 echo = -> console.log arguments
-###
-# React
-###
 { assign } = Object
 {
   Text
@@ -33,7 +30,7 @@ Comp =
     else if typeof component is 'object'
 
       return unless component.render
-      componentObj = assign componentObj, component
+      componentObj = assign {}, componentObj, component
 
     # TODO use throw error with error message
     else return

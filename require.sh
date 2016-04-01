@@ -7,6 +7,7 @@ cnpm install --save \
   redux-logger \
   redux-actions \
   reduce-reducers \
+  seamless-immutable \
   randomcolor \
   flux-standard-action \
   query-string \
