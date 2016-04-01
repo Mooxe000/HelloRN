@@ -51,6 +51,10 @@ store.dispatch completeTodo
 store.dispatch completeTodo
   index: 1
 
+#   removeTodo
+store.dispatch removeTodo
+  index: 2
+
 #   visibility
 store.dispatch setVisibilityFilter
   filter:

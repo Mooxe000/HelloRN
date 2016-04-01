@@ -1,12 +1,11 @@
+echo = console.log
+dd = require 'ddeyes'
 {
   handleAction
   handleActions
 } = require 'redux-actions'
 reduceReducers = require 'reduce-reducers'
 types = require '../constants/index'
-echo = console.log
-dd = require 'ddeyes'
-___ = require '../../../../src/common/assign'
 si = require '../../../../src/common/immutableHelper'
 {
   mergeReduce
@@ -19,6 +18,7 @@ si = require '../../../../src/common/immutableHelper'
 {
   SET_VISIBILITY_FILTER
   ADD_TODO
+  REMOVE_TODO
   COMPLETE_TODO
 } = Todo
 
@@ -41,6 +41,10 @@ todos = handleActions
       text: action.payload.text
       completed: false
     ]
+
+  REMOVE_TODO: (state, action) ->
+    si.Array.remove state
+    , action.payload.index
 
   COMPLETE_TODO: (state, action) ->
     si.Array.set state
