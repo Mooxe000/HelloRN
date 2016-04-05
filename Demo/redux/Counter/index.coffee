@@ -2,7 +2,9 @@
 echo = -> console.log arguments
 dd = require 'ddeyes'
 
-thunk = require 'redux-thunk'
+createSagaMiddleware = (
+  require 'redux-saga'
+).default
 logger = require 'redux-logger'
 {
   createStore
@@ -10,9 +12,15 @@ logger = require 'redux-logger'
 
 reducers =
   counterApp: require './reducers/index'
+
+sagas =
+  counterApp: require './sagas/index'
+
 {
   increment
+  incrementAsync
   decrement
+  decrementAsync
 } = require './actions/index'
 
 {
@@ -21,13 +29,34 @@ reducers =
 } = require './constants/index'
 
 store = createStore reducers
+, [
+  createSagaMiddleware.apply @
+  , sagas.counterApp
+  # logger()
+]
 
-unsubscribe = store.subscribe ->
+gen = ->
+  # unsubscribe = yield store.subscribe ->
+  #   store.getState()
+  yield store.dispatch incrementAsync()
   dd store.getState()
+  yield store.dispatch incrementAsync 4
+  dd store.getState()
+  yield store.dispatch decrementAsync 1
+  dd store.getState()
+  yield store.dispatch decrementAsync()
+  dd store.getState()
+  yield store.dispatch decrementAsync 2
+  dd store.getState()
+  # unsubscribe()
 
-store.dispatch increment()
-store.dispatch increment 3
-store.dispatch decrement 1
-store.dispatch decrement 4
+scheduler = (task) ->
+  setTimeout ->
+    taskObj = task.next task.value
+    # 如果Generator函数未结束，就继续调用
+    unless taskObj.done
+      task.value = taskObj.value
+      scheduler task
+  , 0
 
-unsubscribe()
+scheduler gen()

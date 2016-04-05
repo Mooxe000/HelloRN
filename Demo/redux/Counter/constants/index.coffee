@@ -1,4 +1,6 @@
 module.exports = {
   'INCREMENT'
+  'INCREMENT_ASYNC'
   'DECREMENT'
+  'DECREMENT_ASYNC'
 }

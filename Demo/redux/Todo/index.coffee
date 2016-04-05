@@ -2,7 +2,6 @@
 echo = -> console.log arguments
 dd = require 'ddeyes'
 
-thunk = require 'redux-thunk'
 logger = require 'redux-logger'
 {
   createStore
@@ -28,7 +27,6 @@ VisibilityFilters = require './constants/Visibility'
 #   init
 store = createStore reducers
 # , [
-#   thunk.default
 #   logger()
 # ]
 

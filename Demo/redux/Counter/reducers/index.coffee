@@ -20,10 +20,12 @@ initialState =
 count = handleActions
 
   INCREMENT: (state, action) ->
+    # dd increment: action
     action.payload or= 1
     state + action.payload
 
   DECREMENT: (state, action) ->
+    # dd decrement: action
     action.payload or= 1
     state - action.payload
 

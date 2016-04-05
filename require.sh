@@ -4,6 +4,7 @@ cnpm install --save \
   react-native \
   redux \
   redux-thunk \
+  redux-saga \
   redux-logger \
   redux-actions \
   reduce-reducers \
