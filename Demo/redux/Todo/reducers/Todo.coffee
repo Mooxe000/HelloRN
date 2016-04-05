@@ -4,7 +4,7 @@ dd = require 'ddeyes'
   handleAction
   handleActions
 } = require 'redux-actions'
-reduceReducers = require 'reduce-reducers'
+# reduceReducers = require 'reduce-reducers'
 types = require '../constants/index'
 si = require '../../../../src/common/immutableHelper'
 {
@@ -52,7 +52,7 @@ todos = handleActions
     , state[action.payload.index].merge
       completed: true
 
-, []
+# , []
 
 todoApp = mergeReduce {
   visibilityFilter
