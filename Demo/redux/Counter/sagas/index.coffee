@@ -1,4 +1,5 @@
 echo = console.log
+{ assign } = Object
 { takeEvery } = require 'redux-saga'
 {
   put
@@ -10,25 +11,17 @@ delay = (ms) ->
     setTimeout resolve, ms
 
 incrementAsync = (action) ->
-  {
-    payload
-  } = action
   # yield call delay, 1000
-  yield put {
-    type: 'INCREMENT'
-    payload
-  }
+  yield put assign {}
+  , action
+  , type: 'INCREMENT'
   return
 
 decrementAsync = (action) ->
-  {
-    payload
-  } = action
   # yield call delay, 1000
-  yield put {
-    type: 'DECREMENT'
-    payload
-  }
+  yield put assign {}
+  , action
+  , type: 'DECREMENT'
   return
 
 rootSaga = [
