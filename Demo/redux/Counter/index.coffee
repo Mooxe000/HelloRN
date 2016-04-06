@@ -1,13 +1,12 @@
 #!/usr/bin/env coffee
 echo = console.log
 dd = require 'ddeyes'
+test = require 'tape'
 co = require 'co'
 
 createSagaMiddleware = (
   require 'redux-saga'
 ).default
-
-logger = require 'redux-logger'
 
 onStateChange = (
   require 'redux-on-state-change'
@@ -36,27 +35,87 @@ sagas =
   DECREMENT
 } = require './constants/index'
 
-tasks = [
-  -> incrementAsync()
-  -> incrementAsync 5
-  -> decrementAsync 2
-  -> decrementAsync 3
-  -> incrementAsync 4
+tasksBase = [
+    actual:
+      sync: -> increment()
+      async: -> incrementAsync()
+    expected: counterApp: count: 1
+    msg: '0 + 1 = 1'
+  ,
+    actual:
+      sync: -> increment 5
+      async: -> incrementAsync 5
+    expected: counterApp: count: 6
+    msg: '1 + 5 = 6'
+  ,
+    actual:
+      sync: -> decrement 2
+      async: -> decrementAsync 2
+    expected: counterApp: count: 4
+    msg: '6 - 2 = 4'
+  ,
+    actual:
+      sync: -> decrement 3
+      async: -> decrementAsync 3
+    expected: counterApp: count: 1
+    msg: '4 - 3 = 1'
+  ,
+    actual:
+      sync: -> increment 4
+      async: -> incrementAsync 4
+    expected: counterApp: count: 5
+    msg: '1 + 4 = 5'
 ]
 
-subscriber = (prevState, nextState, action, dispatch) ->
-  unless isEqual prevState, nextState
-    dd nextState
-    dispatch tasks.shift()()
+test 'Sync Saga Test'
+, (t) ->
 
-store = createStore reducers
-, [
-  createSagaMiddleware.apply @
-  , sagas.counterApp
-  onStateChange subscriber
-  # logger()
-]
+  tasks = tasksBase.slice()
 
-gen = -> store.dispatch tasks.shift()()
+  store = createStore reducers
+  , [
+    createSagaMiddleware.apply @
+    , sagas.counterApp
+  ]
 
-co gen()
+  unsubscribe = store.subscribe ->
+    dd store.getState()
+    task = tasks.shift()
+    t.deepEqual store.getState()
+    , task.expected
+    , task.msg
+
+  for task in tasks.slice()
+    store.dispatch task.actual.sync()
+
+  unsubscribe()
+
+  t.end()
+
+test 'Async Saga Test'
+, (t) ->
+
+  tasks = tasksBase.slice()
+
+  subscriber = (prevState, nextState, action, dispatch) ->
+    unless isEqual prevState, nextState
+      dd nextState
+      task = tasks.shift()
+      t.deepEqual nextState
+      , task.expected
+      , task.msg
+      dispatch tasks[0].actual.async()
+
+  store = createStore reducers
+  , [
+    createSagaMiddleware.apply @
+    , sagas.counterApp
+    onStateChange subscriber
+  ]
+
+  gen = ->
+    store.dispatch tasks[0].actual.async()
+
+  co gen()
+
+  t.end()

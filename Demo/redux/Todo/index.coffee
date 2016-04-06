@@ -39,7 +39,7 @@ for text in [
   'Learn about reducers'
   'Learn about store'
 ]
-  store.dispatch actions.todoApp.addTodo
+  store.dispatch addTodo
     text: text
 
 #   completeTodo
@@ -51,7 +51,7 @@ store.dispatch completeTodo
 
 #   removeTodo
 store.dispatch removeTodo
-  index: 2
+  index: 1
 
 #   visibility
 store.dispatch setVisibilityFilter

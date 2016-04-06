@@ -36,7 +36,8 @@ cnpm install --save-dev \
   babel-preset-stage-0 \
   babel-preset-stage-2 \
   babel-preset-react \
-  node-fetch
+  node-fetch \
+  tape
   # bluebird
   # bignumber.js
 
