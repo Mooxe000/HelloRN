@@ -79,9 +79,10 @@ test 'Sync Saga Test'
   ]
 
   unsubscribe = store.subscribe ->
-    dd store.getState()
+    state = store.getState()
     task = tasks.shift()
-    t.deepEqual store.getState()
+    dd state
+    t.deepEqual state
     , task.expected
     , task.msg
 
