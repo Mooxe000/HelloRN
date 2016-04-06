@@ -11,14 +11,14 @@ delay = (ms) ->
     setTimeout resolve, ms
 
 incrementAsync = (action) ->
-  # yield call delay, 1000
+  yield call delay, 1000
   yield put assign {}
   , action
   , type: 'INCREMENT'
   return
 
 decrementAsync = (action) ->
-  # yield call delay, 1000
+  yield call delay, 1000
   yield put assign {}
   , action
   , type: 'DECREMENT'

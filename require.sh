@@ -8,13 +8,16 @@ cnpm install --save \
   redux-logger \
   redux-actions \
   reduce-reducers \
+  redux-on-state-change \
   seamless-immutable \
   randomcolor \
   flux-standard-action \
   query-string \
   moment \
   markdown \
-  util
+  util \
+  is-equal \
+  co
 
 cnpm install --save-dev \
   coffee-script \

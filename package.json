@@ -10,7 +10,9 @@
     "link": "rnpm link react-native-vector-icons; rnpm link react-native-barcodescanner; rnpm link react-native-camera; rnpm link react-native-vibration; rnpm link react-native-blur"
   },
   "dependencies": {
+    "co": "^4.6.0",
     "flux-standard-action": "^0.6.1",
+    "is-equal": "^1.5.1",
     "markdown": "^0.5.0",
     "moment": "^2.12.0",
     "normalizr": "^2.0.1",
@@ -34,6 +36,7 @@
     "redux": "^3.3.1",
     "redux-actions": "^0.9.1",
     "redux-logger": "^2.6.1",
+    "redux-on-state-change": "^1.0.0",
     "redux-saga": "^0.9.5",
     "redux-thunk": "^2.0.1",
     "seamless-immutable": "^5.1.1",
