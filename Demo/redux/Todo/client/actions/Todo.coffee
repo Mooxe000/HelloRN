@@ -1,6 +1,6 @@
 {
   createActions
-} = require '../../../../src/common/reduxHelper'
+} = require '../../../../../src/common/reduxHelper'
 types = require '../constants/index'
 {
   ADD_TODO

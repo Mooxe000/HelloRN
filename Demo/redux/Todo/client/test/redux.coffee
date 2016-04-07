@@ -5,7 +5,7 @@ test = require 'tape'
 
 {
   createStore
-} = require '../../../../src/common/reduxHelper'
+} = require '../../../../../src/common/reduxHelper'
 
 reducers =
   todoApp: require '../reducers/Todo'

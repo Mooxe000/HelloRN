@@ -6,10 +6,10 @@ dd = require 'ddeyes'
 } = require 'redux-actions'
 # reduceReducers = require 'reduce-reducers'
 types = require '../constants/index'
-si = require '../../../../src/common/immutableHelper'
+si = require '../../../../../src/common/immutableHelper'
 {
   mergeReduce
-} = require '../../../../src/common/reduxHelper'
+} = require '../../../../../src/common/reduxHelper'
 
 {
   Visibility
