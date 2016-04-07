@@ -4,12 +4,13 @@ fetch = require 'node-fetch'
 
 resource =
   host: 'localhost'
-  port: 4002
+  port: 3000
   router:
     todos: 'todos'
 
+baseUrl = "http://#{resource.host}:#{resource.port}"
 url =
-  todos: "http://#{resource.host}:#{resource.port}/#{resource.router.todos}"
+  todos: "#{baseUrl}/#{resource.router.todos}"
 
 checkStatus = (res) ->
   if res.status >= 200 and res.status < 300

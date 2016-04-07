@@ -1,0 +1,19 @@
+{
+  "todos": [
+    {
+      "id": "cimqbq0n80000db39l2h3u1fl",
+      "text": "Learn about actions",
+      "completed": false
+    },
+    {
+      "id": "cimqbq0nw0001db39vlfe2opr",
+      "text": "Learn about reducers",
+      "completed": true
+    },
+    {
+      "id": "cimqbq0o70002db39k3vdd5is",
+      "text": "Learn about store",
+      "completed": false
+    }
+  ]
+}

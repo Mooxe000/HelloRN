@@ -27,9 +27,8 @@ toggleState = (index) ->
     ids = normalizer.result
     id = ids[index]
     todo = normalizer.entities.todos[id]
-    do ->
-      assign {}, todo
-      , done: if todo.done then false else true
+    do -> assign {}, todo
+    , completed: if todo.done then false else true
   .then (newTodo) ->
     todosService.update newTodo
 
@@ -48,16 +47,16 @@ co do ->
   yield deleteAll()
   yield todosService.create
     id: cuid()
-    title: "Learn about actions"
-    done: false
+    text: "Learn about actions"
+    completed: false
   yield todosService.create
     id: cuid()
-    title: "Learn about reducers"
-    done: false
+    text: "Learn about reducers"
+    completed: false
   yield todosService.create
     id: cuid()
-    title: "Learn about store"
-    done: false
+    text: "Learn about store"
+    completed: false
 
   yield toggleState 1
 
