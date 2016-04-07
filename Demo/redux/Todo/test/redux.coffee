@@ -5,14 +5,14 @@ test = require 'tape'
 
 {
   createStore
-} = require '../../../src/common/reduxHelper'
+} = require '../../../../src/common/reduxHelper'
 
 reducers =
-  todoApp: require './reducers/Todo'
+  todoApp: require '../reducers/Todo'
 actions =
-  todoApp: require './actions/Todo'
+  todoApp: require '../actions/Todo'
 
-VisibilityFilters = require './constants/Visibility'
+VisibilityFilters = require '../constants/Visibility'
 
 Immutable = require 'seamless-immutable'
 
