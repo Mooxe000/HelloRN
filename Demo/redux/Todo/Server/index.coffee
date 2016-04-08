@@ -1,10 +1,14 @@
 #!/usr/bin/env coffee
-jsonServer = require 'json-server'
-server = jsonServer.create()
+{
+  create
+  defaults
+  router
+} = require 'json-server'
 
-server.use jsonServer.defaults()
+server = create()
 
-router = jsonServer.router 'todos.json'
+server.use defaults()
+server.use '/'
+, router 'todos.json'
 
-server.use '/', router
 server.listen 3000

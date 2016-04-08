@@ -1,56 +1,75 @@
 echo = console.log
 dd = require 'ddeyes'
+{ assign } = Object
 {
   handleAction
   handleActions
 } = require 'redux-actions'
-# reduceReducers = require 'reduce-reducers'
-types = require '../constants/index'
 si = require '../../../../../src/common/immutableHelper'
 {
   mergeReduce
 } = require '../../../../../src/common/reduxHelper'
 
+constants = require '../constants/index'
 {
-  Visibility
-  Todo
-} = types
-{
+  LOAD_TODO_STATE
+  ADD_TODO_STATE
+  MODIFY_TODO_STATE
+  REMOVE_TODO_STATE
   SET_VISIBILITY_FILTER
-  ADD_TODO
-  REMOVE_TODO
-  COMPLETE_TODO
-} = Todo
+} = constants.Todo.State.types
 
-initialState =
-  visibilityFilter: Visibility.SHOW_ALL
-  todos: []
+{
+  initial
+  initialState
+} = (
+  require '../initials/index'
+).Todo()
 
-visibilityFilter = handleAction SET_VISIBILITY_FILTER
-, next: (
-  state = Visbility.SHOW_ALL
-  action
-) -> action.payload.filter
-# , throw
+visibilityFilter = handleAction(
+  SET_VISIBILITY_FILTER
+  next: (state, action) ->
+    { filter } = action.payload
+    filter
+  throw: (state, action) ->
+    throw new Error {
+      state
+      action
+    }
+)
 
 todos = handleActions
 
-  ADD_TODO: (state, action) ->
+  LOAD_TODO_STATE: (state, action) ->
+    action.payload
+
+  ADD_TODO_STATE: (state, action) ->
+    {
+      text
+    } = action.payload
+
     si.Array.push state
     , [
-      text: action.payload.text
-      completed: false
+      initial.todo text
     ]
 
-  REMOVE_TODO: (state, action) ->
-    si.Array.remove state
-    , action.payload.index
+  MODIFY_TODO_STATE: (state, action) ->
+    {
+      index
+      todo
+    } = action.payload
 
-  COMPLETE_TODO: (state, action) ->
-    si.Array.set state
-    , action.payload.index
-    , state[action.payload.index].merge
-      completed: true
+    si.Array.set state, index
+    ,
+      assign {}, state[index], todo
+
+  REMOVE_TODO_STATE: (state, action) ->
+    {
+      index
+    } = action.payload
+
+    si.Array.remove state
+    , index
 
 # , []
 

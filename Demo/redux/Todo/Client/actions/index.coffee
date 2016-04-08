@@ -1,18 +1,16 @@
 {
   createActions
 } = require '../../../../../src/common/reduxHelper'
-types = require '../constants/index'
-{
-  ADD_TODO
-  REMOVE_TODO
-  COMPLETE_TODO
-  SET_VISIBILITY_FILTER
-} = types.Todo
 
-actions =
-  addTodo: ADD_TODO
-  removeTodo: REMOVE_TODO
-  completeTodo: COMPLETE_TODO
-  setVisibilityFilter: SET_VISIBILITY_FILTER
+constants = (
+  require '../constants/index'
+).Todo
 
-module.exports = createActions actions
+Todo =
+  Entry: createActions constants.Entry.actions
+  ToBE: createActions constants.ToBE.actions
+  State: createActions constants.State.actions
+
+module.exports = {
+  Todo
+}

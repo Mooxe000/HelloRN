@@ -2,50 +2,58 @@
 echo = console.log
 dd = require 'ddeyes'
 test = require 'tape'
+Immutable = require 'seamless-immutable'
 
 {
   createStore
 } = require '../../../../src/common/reduxHelper'
 
 reducers =
-  todoApp: require '../Client/reducers/Todo'
+  todoApp: require '../Client/reducers/index'
 actions =
-  todoApp: require '../Client/actions/Todo'
+  todoApp: require '../Client/actions/index'
 
-VisibilityFilters = require '../Client/constants/Visibility'
+constants = (
+  require '../Client/constants/index'
+).Todo
 
-Immutable = require 'seamless-immutable'
+{
+  SHOW_ALL_TODO
+  SHOW_COMPLETED_TODO
+  SHOW_ACTIVE_TODO
+} = constants.visibilityFilter
 
 ###
     Flow
 ###
 {
-  addTodo
-  removeTodo
-  completeTodo
+  # loadTodoState
+  addTodoState
+  modifyTodoState
+  removeTodoState
   setVisibilityFilter
-} = actions.todoApp
+} = actions.todoApp.Todo.State
 
 #   init
 store = createStore reducers
 
 tasks = [
-    actual: -> addTodo
+    actual: -> addTodoState
       text: 'Learn about actions'
     expected:
       todoApp:
-        visibilityFilter: VisibilityFilters.SHOW_ALL
+        visibilityFilter: SHOW_ALL_TODO
         todos: Immutable [
           text: 'Learn about actions'
           completed: false
         ]
     msg: 'add todo'
   ,
-    actual: -> addTodo
+    actual: -> addTodoState
       text: 'Learn about reducers'
     expected:
       todoApp:
-        visibilityFilter: 'SHOW_ALL'
+        visibilityFilter: SHOW_ALL_TODO
         todos: Immutable [
             text: 'Learn about actions'
             completed: false
@@ -55,11 +63,11 @@ tasks = [
         ]
     msg: 'add todo'
   ,
-    actual: -> addTodo
+    actual: -> addTodoState
       text: 'Learn about store'
     expected:
       todoApp:
-        visibilityFilter: VisibilityFilters.SHOW_ALL
+        visibilityFilter: SHOW_ALL_TODO
         todos: Immutable [
             text: 'Learn about actions'
             completed: false
@@ -72,14 +80,16 @@ tasks = [
         ]
     msg: 'add todo'
   ,
-    actual: -> completeTodo
+    actual: -> modifyTodoState
       index: 0
+      todo:
+        text: 'Learn about sagas'
     expected:
       todoApp:
-        visibilityFilter: VisibilityFilters.SHOW_ALL
+        visibilityFilter: SHOW_ALL_TODO
         todos: Immutable [
-            text: 'Learn about actions'
-            completed: true
+            text: 'Learn about sagas'
+            completed: false
           ,
             text: 'Learn about reducers'
             completed: false
@@ -89,14 +99,16 @@ tasks = [
         ]
     msg: 'complete todo'
   ,
-    actual: -> completeTodo
+    actual: -> modifyTodoState
       index: 1
+      todo:
+        completed: true
     expected:
       todoApp:
-        visibilityFilter: VisibilityFilters.SHOW_ALL
+        visibilityFilter: SHOW_ALL_TODO
         todos: Immutable [
-            text: 'Learn about actions'
-            completed: true
+            text: 'Learn about sagas'
+            completed: false
           ,
             text: 'Learn about reducers'
             completed: true
@@ -106,30 +118,29 @@ tasks = [
         ]
     msg: 'complete todo'
   ,
-    actual: -> removeTodo
+    actual: -> removeTodoState
       index: 1
     expected:
       todoApp:
-        visibilityFilter: VisibilityFilters.SHOW_ALL
+        visibilityFilter: SHOW_ALL_TODO
         todos: Immutable [
-            text: 'Learn about actions'
-            completed: true
+            text: 'Learn about sagas'
+            completed: false
           ,
             text: 'Learn about store'
             completed: false
         ]
     msg: 'remove todo'
   ,
-    actual: -> setVisibilityFilter
-      filter:
-        VisibilityFilters
-        .SHOW_COMPLETED
+    actual: ->
+      setVisibilityFilter
+        filter: SHOW_COMPLETED_TODO
     expected:
       todoApp:
-        visibilityFilter: VisibilityFilters.SHOW_COMPLETED
+        visibilityFilter: SHOW_COMPLETED_TODO
         todos: Immutable [
-            text: 'Learn about actions'
-            completed: true
+            text: 'Learn about sagas'
+            completed: false
           ,
             text: 'Learn about store'
             completed: false
