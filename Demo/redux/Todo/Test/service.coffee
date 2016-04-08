@@ -4,7 +4,7 @@ echo = console.log
 dd = require 'ddeyes'
 co = require 'co'
 cuid = require 'cuid'
-todosService = require '../services/index'
+todosService = require '../Client/services/index'
 {
   normalize
   Schema
@@ -37,9 +37,7 @@ deleteAll = ->
   .then (normalizer) ->
     ids = normalizer.result
     for id in ids
-      todosService.delete {
-        id
-      }
+      todosService.delete id
 
 todosSchema = new Schema 'todos'
 

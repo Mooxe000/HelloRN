@@ -5,14 +5,14 @@ test = require 'tape'
 
 {
   createStore
-} = require '../../../../../src/common/reduxHelper'
+} = require '../../../../src/common/reduxHelper'
 
 reducers =
-  todoApp: require '../reducers/Todo'
+  todoApp: require '../Client/reducers/Todo'
 actions =
-  todoApp: require '../actions/Todo'
+  todoApp: require '../Client/actions/Todo'
 
-VisibilityFilters = require '../constants/Visibility'
+VisibilityFilters = require '../Client/constants/Visibility'
 
 Immutable = require 'seamless-immutable'
 
@@ -34,7 +34,7 @@ tasks = [
       text: 'Learn about actions'
     expected:
       todoApp:
-        visibilityFilter: 'SHOW_ALL'
+        visibilityFilter: VisibilityFilters.SHOW_ALL
         todos: Immutable [
           text: 'Learn about actions'
           completed: false
@@ -59,7 +59,7 @@ tasks = [
       text: 'Learn about store'
     expected:
       todoApp:
-        visibilityFilter: 'SHOW_ALL'
+        visibilityFilter: VisibilityFilters.SHOW_ALL
         todos: Immutable [
             text: 'Learn about actions'
             completed: false
@@ -76,7 +76,7 @@ tasks = [
       index: 0
     expected:
       todoApp:
-        visibilityFilter: 'SHOW_ALL'
+        visibilityFilter: VisibilityFilters.SHOW_ALL
         todos: Immutable [
             text: 'Learn about actions'
             completed: true
@@ -93,7 +93,7 @@ tasks = [
       index: 1
     expected:
       todoApp:
-        visibilityFilter: 'SHOW_ALL'
+        visibilityFilter: VisibilityFilters.SHOW_ALL
         todos: Immutable [
             text: 'Learn about actions'
             completed: true
@@ -110,7 +110,7 @@ tasks = [
       index: 1
     expected:
       todoApp:
-        visibilityFilter: 'SHOW_ALL'
+        visibilityFilter: VisibilityFilters.SHOW_ALL
         todos: Immutable [
             text: 'Learn about actions'
             completed: true
@@ -126,7 +126,7 @@ tasks = [
         .SHOW_COMPLETED
     expected:
       todoApp:
-        visibilityFilter: 'SHOW_COMPLETED'
+        visibilityFilter: VisibilityFilters.SHOW_COMPLETED
         todos: Immutable [
             text: 'Learn about actions'
             completed: true

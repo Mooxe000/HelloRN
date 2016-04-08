@@ -4,10 +4,6 @@ dd = require 'ddeyes'
 test = require 'tape'
 co = require 'co'
 
-createSagaMiddleware = (
-  require 'redux-saga'
-).default
-
 onStateChange = (
   require 'redux-on-state-change'
 ).default
@@ -15,6 +11,7 @@ isEqual = require 'is-equal'
 
 {
   createStore
+  createSagaMiddleware
 } = require '../../../src/common/reduxHelper'
 
 reducers =
@@ -74,8 +71,7 @@ test 'Sync Saga Test'
 
   store = createStore reducers
   , [
-    createSagaMiddleware.apply @
-    , sagas.counterApp
+    createSagaMiddleware sagas.counterApp
   ]
 
   unsubscribe = store.subscribe ->
@@ -109,8 +105,7 @@ test 'Async Saga Test'
 
   store = createStore reducers
   , [
-    createSagaMiddleware.apply @
-    , sagas.counterApp
+    createSagaMiddleware sagas.counterApp
     onStateChange subscriber
   ]
 
