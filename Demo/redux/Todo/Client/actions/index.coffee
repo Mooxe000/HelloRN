@@ -6,10 +6,7 @@ constants = (
   require '../constants/index'
 ).Todo
 
-Todo =
-  Entry: createActions constants.Entry.actions
-  ToBE: createActions constants.ToBE.actions
-  State: createActions constants.State.actions
+Todo = createActions constants.actions
 
 module.exports = {
   Todo

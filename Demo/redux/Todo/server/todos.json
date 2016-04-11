@@ -1,17 +1,17 @@
 {
   "todos": [
     {
-      "id": "cimr27a8b0000ht395oe1i7mq",
+      "id": "cimve4e3x0000jj39h26xmzwe",
       "text": "Learn about actions",
       "completed": false
     },
     {
-      "id": "cimr27a920001ht39yo3pj700",
+      "id": "cimve4e4o0001jj39uyzcridn",
       "text": "Learn about reducers",
-      "completed": true
+      "completed": false
     },
     {
-      "id": "cimr27a9d0002ht39d7ph27eu",
+      "id": "cimve4e4z0002jj39bhyn7nr8",
       "text": "Learn about store",
       "completed": false
     }

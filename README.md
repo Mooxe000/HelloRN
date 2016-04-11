@@ -36,7 +36,41 @@ simlator && react-native run-ios
 react-native run-android
 ```
 
-### TODO
+## react-native-vector-icons
 
-* [react-native-simple-router](https://github.com/react-native-simple-router-community/react-native-simple-router)
-* [react-native-gifted-listview](https://github.com/FaridSafi/react-native-gifted-listview)
+### ios
+
+Edit ./ios/HelloRN/Info.plist and Add these lines
+
+```xml
+<key>UIAppFonts</key>
+  <array>
+    <string>Entypo.ttf</string>
+    <string>EvilIcons.ttf</string>
+    <string>FontAwesome.ttf</string>
+    <string>Foundation.ttf</string>
+    <string>Ionicons.ttf</string>
+    <string>MaterialIcons.ttf</string>
+    <string>Octicons.ttf</string>
+    <string>Zocial.ttf</string>
+</array>
+```
+
+### android
+
+Edit ./android/app/build.gradle
+
+After line
+  apply from: "react.gradle"
+Add this line
+  apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
+
+## rnpm link
+
+```bash
+rnpm link react-native-vector-icons
+rnpm link react-native-barcodescanner
+rnpm link react-native-camera
+rnpm link react-native-vibration
+rnpm link react-native-blur
+```

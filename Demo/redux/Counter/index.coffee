@@ -1,13 +1,15 @@
 #!/usr/bin/env coffee
 echo = console.log
 dd = require 'ddeyes'
+
 test = require 'tape'
+isEqual = require 'is-equal'
+
 co = require 'co'
 
 onStateChange = (
   require 'redux-on-state-change'
 ).default
-isEqual = require 'is-equal'
 
 {
   createStore
@@ -95,13 +97,13 @@ test 'Async Saga Test'
   tasks = tasksBase.slice()
 
   subscriber = (prevState, nextState, action, dispatch) ->
-    unless isEqual prevState, nextState
-      dd nextState
-      task = tasks.shift()
-      t.deepEqual nextState
-      , task.expected
-      , task.msg
-      dispatch tasks[0].actual.async()
+    return if isEqual prevState, nextState
+    dd nextState
+    task = tasks.shift()
+    t.deepEqual nextState
+    , task.expected
+    , task.msg
+    dispatch tasks[0].actual.async()
 
   store = createStore reducers
   , [
@@ -109,9 +111,7 @@ test 'Async Saga Test'
     onStateChange subscriber
   ]
 
-  gen = ->
+  co do ->
     store.dispatch tasks[0].actual.async()
-
-  co gen()
 
   t.end()

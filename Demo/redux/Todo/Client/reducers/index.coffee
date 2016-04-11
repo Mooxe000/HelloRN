@@ -5,7 +5,7 @@ dd = require 'ddeyes'
   handleAction
   handleActions
 } = require 'redux-actions'
-si = require '../../../../../src/common/immutableHelper'
+SI = require '../../../../../src/common/immutableHelper'
 {
   mergeReduce
 } = require '../../../../../src/common/reduxHelper'
@@ -17,7 +17,7 @@ constants = require '../constants/index'
   MODIFY_TODO_STATE
   REMOVE_TODO_STATE
   SET_VISIBILITY_FILTER
-} = constants.Todo.State.types
+} = constants.Todo.types
 
 {
   initial
@@ -41,17 +41,13 @@ visibilityFilter = handleAction(
 todos = handleActions
 
   LOAD_TODO_STATE: (state, action) ->
-    action.payload
+    action.payload.todos
 
   ADD_TODO_STATE: (state, action) ->
-    {
-      text
-    } = action.payload
+    { todo } = action.payload
 
-    si.Array.push state
-    , [
-      initial.todo text
-    ]
+    SI.Array.push state
+    , [ todo ]
 
   MODIFY_TODO_STATE: (state, action) ->
     {
@@ -59,17 +55,17 @@ todos = handleActions
       todo
     } = action.payload
 
-    si.Array.set state, index
+    SI.Array.set state, index
     ,
       assign {}, state[index], todo
 
   REMOVE_TODO_STATE: (state, action) ->
     {
-      index
+      todoId
     } = action.payload
 
-    si.Array.remove state
-    , index
+    SI.Array.remove state
+    , id: todoId
 
 # , []
 

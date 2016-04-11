@@ -1,23 +1,25 @@
-si = require 'seamless-immutable'
+SI = require 'seamless-immutable'
 
-init = si
+module.exports =
+  init: SI
 
-Array =
+  Array:
+    push: (siArray, pushData...) ->
+      siArray.concat.apply siArray, pushData
 
-  push: (siArray, pushData...) ->
-    siArray.concat.apply siArray, pushData
+    set: (siArray, setIndex, setData) ->
+      siArray.flatMap (item, index) ->
+        return item unless index is setIndex
+        setData
 
-  set: (siArray, setIndex, setData) ->
-    siArray.flatMap (item, index) ->
-      return item unless index is setIndex
-      setData
-
-  remove: (siArray, setIndex) ->
-    siArray.flatMap (item, index) ->
-      return item unless index is setIndex
-      []
-
-module.exports = {
-  init
-  Array
-}
+    remove: (siArray, setIndex) ->
+      if typeof setIndex is 'number'
+        siArray.flatMap (item, index) ->
+          return item unless index is setIndex
+          []
+      else if typeof setIndex is 'object'
+        siArray.flatMap (item, index) ->
+          for k, v of setIndex
+            return item unless item[k] is v
+          []
+      else siArray # TODO array

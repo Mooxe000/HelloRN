@@ -20,7 +20,7 @@ checkStatus = (res) ->
     error.response = res
     throw error
 
-todos =
+Todo =
 
   fetch: ->
     promise = fetch url.todos
@@ -60,4 +60,6 @@ todos =
     .then (res) -> res.json()
     .catch (ex) -> throw new Error ex
 
-module.exports = todos
+module.exports = {
+  Todo
+}

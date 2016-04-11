@@ -55,25 +55,17 @@ createActions = (config) ->
 saga = (
   require 'redux-saga'
 ).default
+sagaEffects = require 'redux-saga/effects'
 createSagaMiddleware = (sagas) ->
   saga.apply @, sagas
+dispatch = (action, actionType) ->
+  sagaEffects.put assign {}
+  , action
+  , type: actionType
 
 ###
   redux crud
 ###
-reduxCrud = require 'redux-crud'
-crudActionsTypes = (routeName) ->
-  crudTypes = reduxCrud.actionTypesFor routeName
-  Object.keys crudTypes
-  .reduce (result, key, index, keys) ->
-    if crudTypes[key] is key
-      result.types[key] = crudTypes[key]
-    else
-      result.actions[key] = crudTypes[key]
-    result
-  ,
-    types: {}
-    actions: {}
 
 underlineToHump = (name) ->
   words = name.split '_'
@@ -96,7 +88,36 @@ toActionsTypes = (typesObj) ->
     r.actions[underlineToHump type] = type
   r
 
-mergeActionsTypes = (actionsTypesArray...) ->
+crudActionsTypes = (routeName) ->
+  routeName = routeName.toUpperCase()
+  r = {}
+  for kw in [
+    'FETCH'
+    'CREATE'
+    'UPDATE'
+    'DELETE'
+  ]
+    assign r, {
+      "#{routeName}_#{kw}"
+      "#{routeName}_#{kw}_START"
+      "#{routeName}_#{kw}_SUCCESS"
+      "#{routeName}_#{kw}_ERROR"
+    }
+  toActionsTypes r
+
+# TODO can use object params
+mergeActionsTypes = ->
+  actionsTypesArray = []
+  if arguments.length is 1
+    if Array.isArray arguments[0]
+      actionsTypesArray = arguments[0]
+    else if typeof arguments[0] is 'object'
+      for k, v of arguments[0]
+        actionsTypesArray.push v
+    else return # TODO throw
+  else
+    actionsTypesArray = arguments
+
   actionsTypesArray
   .reduce (result, actionsTypes, index, array) ->
     actions: assign {}
@@ -114,6 +135,7 @@ module.exports = {
   mergeReduce
   createActions
   createSagaMiddleware
+  dispatch
   crudActionsTypes
   toActionsTypes
   mergeActionsTypes

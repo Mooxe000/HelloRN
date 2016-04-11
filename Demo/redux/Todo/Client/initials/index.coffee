@@ -1,13 +1,15 @@
+cuid = require 'cuid'
 constants = (
   require '../constants/index'
 ).Todo
-{ SHOW_ALL_TODO } = constants.visibilityFilter
+{ SHOW_ALL_TODO } = constants.types
 
 Todo = ->
 
   initial =
     visibilityFilter: SHOW_ALL_TODO
     todo: (text) -> {
+      id: cuid()
       text
       completed: false
     }

@@ -1,51 +1,172 @@
+echo = console.log
+dd = require 'ddeyes'
 { assign } = Object
 { takeEvery } = require 'redux-saga'
+{ call } = require 'redux-saga/effects'
+{ dispatch } = require '../../../../../src/common/reduxHelper'
+
+Types = (
+  require '../constants/index'
+).Todo.types
+
+services =
+  todoApp: require '../services/index'
+
 {
-  call
-  put
-} = require 'redux-saga/effects'
-crud = require '../crud/index'
-types = require '../constants/index'
-{
-  FETCH_TODO
-  CREATE_TODO
-  UPDATE_TODO
-  DELETE_TODO
-} = types.Fetch
+  TODO_FETCH
+  TODO_FETCH_START
+  TODO_FETCH_SUCCESS
+  TODO_FETCH_ERROR
+  LOAD_TODO_STATE
+
+  TODO_CREATE
+  TODO_CREATE_START
+  TODO_CREATE_SUCCESS
+  TODO_CREATE_ERROR
+  ADD_TODO_STATE
+
+  TODO_UPDATE
+  TODO_UPDATE_START
+  TODO_UPDATE_SUCCESS
+  TODO_UPDATE_ERROR
+  MODIFY_TODO_STATE
+
+  TODO_DELETE
+  TODO_DELETE_START
+  TODO_DELETE_SUCCESS
+  TODO_DELETE_ERROR
+  REMOVE_TODO_STATE
+} = Types
 
 Async =
 
   fetch: (action) ->
-    todos = yield call crud.fetch()
-    yield put assign {}
+
+    # dd { action }
+
+    yield dispatch action
+    , TODO_FETCH_START
+
+    try
+      todos = yield call services.todoApp.Todo.fetch
+    catch ex
+
+      yield dispatch action
+      , TODO_FETCH_ERROR
+
+      throw new Error ex
+
+    return unless todos
+
+    newAction = assign {}
     , action
-    , type: 'ADD_TODO'
+    , payload:
+      assign action.payload
+      , { todos }
+
+    yield dispatch newAction
+    , TODO_FETCH_SUCCESS
+
+    yield dispatch newAction
+    , LOAD_TODO_STATE
+
     return
 
   create: (action) ->
-    yield call crud.create action
+
+    # dd { action }
+
+    yield dispatch action
+    , TODO_CREATE_START
+
+    try
+      todoIndex = yield call services.todoApp.Todo.create
+      , action.payload.todo
+    catch ex
+
+      yield dispatch action
+      , TODO_CREATE_ERROR
+
+      throw new Error ex
+
+    return unless todoIndex
+
+    yield dispatch action
+    , TODO_CREATE_SUCCESS
+
+    yield dispatch action
+    , ADD_TODO_STATE
+
     return
 
   update: (action) ->
-    yield call crud.update action
+
+    # dd { action }
+
+    yield dispatch action
+    , TODO_UPDATE_START
+
+    try
+      todos = yield call services.todoApp.Todo.update
+      , action
+    catch ex
+
+      yield dispatch action
+      , TODO_UPDATE_ERROR
+
+      throw new Error ex
+
+    return unless todos
+
+    newAction = assign {}
+    , action
+    , { todos }
+
+    yield dispatch newAction
+    , TODO_UPDATE_SUCCESS
+
+    yield dispatch newAction
+    , MODIFY_TODO_STATE
+
     return
 
   delete: (action) ->
-    yield call crud.delete action
+
+    # dd { action }
+
+    yield dispatch action
+    , TODO_DELETE_START
+
+    try
+      yield call services.todoApp.Todo.delete
+      , action.payload.todoId
+    catch ex
+
+      yield dispatch action
+      , TODO_DELETE_ERROR
+
+      throw new Error ex
+
+    yield dispatch action
+    , TODO_DELETE_SUCCESS
+
+    yield dispatch action
+    , REMOVE_TODO_STATE
+
     return
 
 rootSaga = [
   ->
-    yield from takeEvery FETCH_TODO
+    yield from takeEvery TODO_FETCH
     , Async.fetch
   ->
-    yield from takeEvery CREATE_TODO
+    yield from takeEvery TODO_CREATE
     , Async.create
   ->
-    yield from takeEvery UPDATE_TODO
+    yield from takeEvery TODO_UPDATE
     , Async.update
   ->
-    yield from takeEvery DELETE_TODO
+    yield from takeEvery TODO_DELETE
     , Async.delete
 ]
 
