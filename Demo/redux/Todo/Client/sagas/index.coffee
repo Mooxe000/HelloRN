@@ -107,8 +107,8 @@ Async =
     , TODO_UPDATE_START
 
     try
-      todos = yield call services.todoApp.Todo.update
-      , action
+      todo = yield call services.todoApp.Todo.update
+      , action.payload.todo
     catch ex
 
       yield dispatch action
@@ -116,16 +116,12 @@ Async =
 
       throw new Error ex
 
-    return unless todos
+    return unless todo
 
-    newAction = assign {}
-    , action
-    , { todos }
-
-    yield dispatch newAction
+    yield dispatch action
     , TODO_UPDATE_SUCCESS
 
-    yield dispatch newAction
+    yield dispatch action
     , MODIFY_TODO_STATE
 
     return

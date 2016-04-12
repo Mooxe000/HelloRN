@@ -39,10 +39,7 @@ subscriber = (
   unless action.type is 'LOAD_TODO_STATE'
     return if isEqual prevState, nextState
   unless tasks.length is 0
-    tasks[0] dispatch
-    , action
-    , tasks
-    , store
+    tasks[0] store, tasks, action
 
 store = createStore reducers
 , [
@@ -50,6 +47,4 @@ store = createStore reducers
   onStateChange subscriber
 ]
 
-tasks[0] store.dispatch
-, undefined
-, tasks, store
+tasks[0] store, tasks

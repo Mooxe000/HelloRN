@@ -6,9 +6,7 @@ EventEmitter = require 'eventemitter3'
 actions =
   todoApp: require '../../Client/actions/index'
 
-{
-  forPrintSiState
-} = require '../helper/index'
+{ forPrintSiState } = require '../helper/index'
 
 {
   todoFetch
@@ -27,19 +25,18 @@ EE.on 'todoCreate'
 , (dispatch, action = {}) ->
   dispatch todoCreate action
 
-# EE.on 'todoUpdate'
-# , (index, todo) ->
-#   store.dispatch todoUpdate index, todo
+EE.on 'todoUpdate'
+, (dispatch, action = {}) ->
+  dispatch todoUpdate action
 
 EE.on 'todoDelete'
 , (dispatch, action) ->
   dispatch todoDelete action
 
 EE.on 'tasksShift'
-, (dispatch, action, tasks, store) ->
+, (store, tasks) ->
   tasks.shift()
   dd forPrintSiState store.getState().todoApp
-  tasks[0] dispatch, undefined
-  , tasks, store
+  tasks[0] store, tasks
 
 module.exports = EE

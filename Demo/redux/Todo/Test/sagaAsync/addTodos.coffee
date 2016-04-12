@@ -6,7 +6,8 @@ EE = require './EventEmitter'
   require '../../Client/initials/index'
 ).Todo()
 
-module.exports = (dispatch, action, tasks, store) ->
+module.exports = (store, tasks, action) ->
+  { dispatch } = store
 
   try
     { waitList } = action.payload
@@ -18,6 +19,7 @@ module.exports = (dispatch, action, tasks, store) ->
       "Learn about actions"
       "Learn about reducers"
       "Learn about store"
+      'Learn about sagas'
     ]
 
   unless waitList.length is 0
@@ -31,5 +33,4 @@ module.exports = (dispatch, action, tasks, store) ->
   else
 
     return EE.emit 'tasksShift'
-    , dispatch, action
-    , tasks, store
+    , store, tasks

@@ -1,18 +1,23 @@
 {
   "todos": [
     {
-      "id": "cimve4e3x0000jj39h26xmzwe",
+      "id": "cimx35lx00000p439d9zarq6y",
       "text": "Learn about actions",
       "completed": false
     },
     {
-      "id": "cimve4e4o0001jj39uyzcridn",
+      "id": "cimx35lxi0001p439us3as96g",
       "text": "Learn about reducers",
+      "completed": true
+    },
+    {
+      "id": "cimx35ly00002p4393lphp97p",
+      "text": "Learn about redux",
       "completed": false
     },
     {
-      "id": "cimve4e4z0002jj39bhyn7nr8",
-      "text": "Learn about store",
+      "id": "cimx35lyf0003p43918i17cat",
+      "text": "Learn about sagas",
       "completed": false
     }
   ]

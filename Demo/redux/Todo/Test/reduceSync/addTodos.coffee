@@ -13,21 +13,11 @@ actions =
 
 { forPrintSiState } = require '../helper/index'
 
+SI = require '../../../../../src/common/immutableHelper'
+
 module.exports =
 
   msg: 'add todos'
-
-  actual: (dispatch) ->
-
-    for text in [
-      'Learn about actions'
-      'Learn about reducers'
-      'Learn about store'
-      'Learn about sagas'
-    ]
-
-      dispatch addTodoState
-        todo: initial.todo text
 
   expected:
     visibilityFilter: SHOW_ALL_TODO
@@ -45,21 +35,28 @@ module.exports =
         completed: false
     ]
 
-  test: (state, expected, msg, tasks) ->
+  actual: (store, task, tasks) ->
 
-    return unless state.todoApp.todos.length is 4
+    for waitTodo in task.expected.todos
 
-    _expected = []
+      store.dispatch addTodoState
+        todo: initial.todo waitTodo.text
 
-    for todo in state.todoApp.todos
+  test: (store, task, tasks) ->
 
-      _expected.push
-        text: todo.text
-        completed: todo.completed
+    state = store.getState()
+
+    { todos } = state.todoApp
+
+    return unless todos.length is 4
+
+    expected = SI.Array.eachAsMutable todos
+    , (siTodo) ->
+      siTodo.without 'id'
 
     dd forPrintSiState state.todoApp
 
-    @deepEqual expected.todos
-    , _expected, msg
+    @deepEqual task.expected.todos
+    , expected, task.msg
 
     tasks.shift()

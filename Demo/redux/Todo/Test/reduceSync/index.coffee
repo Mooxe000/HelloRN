@@ -12,8 +12,8 @@ store = createStore reducers
 
 tasks = [
   require './addTodos'
-  require './completedTodo'
-  require './modifyTodoText'
+  require './modifyTodo'
+  # TODO require './removeTodo'
   require './setVisibilityFilter'
   require './cleanTodos'
 ]
@@ -27,14 +27,15 @@ test 'Redux Test'
       task = tasks[0]
       task.test.apply t
       , [
-        state
-        task.expected
-        task.msg
+        store
+        task
         tasks
       ]
 
   for task in tasks.slice()
-    task.actual store.dispatch
+    task.actual store
+    , task
+    , tasks
 
   unsubscribe()
 

@@ -4,15 +4,14 @@ EE = require './EventEmitter'
 
 { normalizerTodos } = require '../helper/index'
 
-module.exports = (dispatch, action, tasks, store) ->
+module.exports = (store, tasks, action) ->
+  { dispatch } = store
 
   return EE.emit 'todoFetch'
   , dispatch unless action
 
   try
-    {
-      todos
-    } = action.payload
+    { todos } = action.payload
   catch ex
 
   if todos
@@ -31,8 +30,7 @@ module.exports = (dispatch, action, tasks, store) ->
     else
 
       return EE.emit 'tasksShift'
-      , dispatch, action
-      , tasks, store
+      , store, tasks
 
   try
     {

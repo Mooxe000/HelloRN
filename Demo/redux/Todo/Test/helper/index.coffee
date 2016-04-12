@@ -4,6 +4,8 @@
   arrayOf
 } = require 'normalizr'
 
+SI = require '../../../../../src/common/immutableHelper'
+
 normalizerTodos = (todos) ->
 
   normalizer = normalize todos
@@ -11,17 +13,8 @@ normalizerTodos = (todos) ->
 
 forPrintSiState = (state) ->
 
-  newState =
-    visibilityFilter: state.visibilityFilter
-    todos: []
-
-  for todo in state.todos
-    newState.todos.push
-      id: todo.id
-      text: todo.text
-      completed: todo.completed
-
-  newState
+  visibilityFilter: state.visibilityFilter
+  todos: SI.Array.eachAsMutable state.todos
 
 module.exports = {
   normalizerTodos

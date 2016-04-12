@@ -7,35 +7,31 @@ actions =
   todoApp: require '../../Client/actions/index'
 { setVisibilityFilter } = actions.todoApp.Todo
 
+{ forPrintSiState } = require '../helper/index'
+
 module.exports =
 
   msg: 'setVisibilityFilter todo'
-
-  actual: (dispatch) ->
-
-    dispatch setVisibilityFilter
-      filter: SHOW_COMPLETED_TODO
 
   expected:
 
     visibilityFilter: SHOW_COMPLETED_TODO
 
-  test: (state, expected, msg, tasks) ->
 
-    newState =
-      visibilityFilter: state.todoApp.visibilityFilter
-      todos: []
+  actual: (store, task, tasks) ->
 
-    for todo in state.todoApp.todos
-      newState.todos.push
-        id: todo.id
-        text: todo.text
-        completed: todo.completed
+    store.dispatch setVisibilityFilter
+      filter: SHOW_COMPLETED_TODO
 
-    dd newState
+  test: (store, task, tasks) ->
 
-    @equal state.todoApp.visibilityFilter
-    , expected.visibilityFilter
-    , msg
+    state = store.getState()
+    { visibilityFilter } = state.todoApp
+
+    dd forPrintSiState state.todoApp
+
+    @equal visibilityFilter
+    , task.expected.visibilityFilter
+    , task.msg
 
     tasks.shift()

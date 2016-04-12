@@ -7,25 +7,30 @@ actions =
   todoApp: require '../../Client/actions/index'
 { loadTodoState } = actions.todoApp.Todo
 
+{ forPrintSiState } = require '../helper/index'
+
 module.exports =
 
   msg: 'clean todos'
-
-  actual: (dispatch) ->
-
-    dispatch loadTodoState
-      todos: []
 
   expected:
 
     visibilityFilter: SHOW_COMPLETED_TODO
     todos: []
 
-  test: (state, expected, msg, tasks) ->
+  actual: (store, task, tasks) ->
 
-    dd state.todoApp
+    store.dispatch loadTodoState
+      todos: []
+
+  test: (store, task, tasks) ->
+
+    state = store.getState()
+    { todos } = state.todoApp
+
+    dd forPrintSiState state.todoApp
 
     @deepEqual state.todoApp
-    , expected, msg
+    , task.expected, task.msg
 
     tasks.shift()

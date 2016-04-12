@@ -23,3 +23,10 @@ module.exports =
             return item unless item[k] is v
           []
       else siArray # TODO array
+
+    eachAsMutable: (siArray, siObjectHandler) ->
+      r = []
+      for siObject in siArray
+        siObject = siObjectHandler siObject if siObjectHandler
+        r.push siObject.asMutable()
+      r
