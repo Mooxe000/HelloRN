@@ -39,8 +39,8 @@ deleteAll = ->
     for id in ids
       services.todoApp.Todo.delete id
 
+getTodos = -> services.todoApp.Todo.fetch()
+
 module.exports = {
-  normalizerFetch
-  deleteAll
-  toggleState
+  getTodos
 }

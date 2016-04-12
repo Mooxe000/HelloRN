@@ -2,38 +2,25 @@
 echo = console.log
 dd = require 'ddeyes'
 co = require 'co'
-cuid = require 'cuid'
 
-{
-  normalizerFetch
-  deleteAll
-  toggleState
-} = require './helper'
+{ getTodos } = require './helper'
 
-services =
-  todoApp: require '../../Client/services/index'
+task =
+  cleanTodos: require './cleanTodos'
+  addTodos: require './addTodos'
+  modifyTodo: require './modifyTodo'
+
+tasks = [
+  task.cleanTodos
+  task.addTodos
+  task.modifyTodo
+  task.cleanTodos
+]
 
 co do ->
-  yield deleteAll()
 
-  yield services.todoApp.Todo.create
-    id: cuid()
-    text: "Learn about actions"
-    completed: false
+  for task in tasks
 
-  yield services.todoApp.Todo.create
-    id: cuid()
-    text: "Learn about reducers"
-    completed: false
-
-  yield services.todoApp.Todo.create
-    id: cuid()
-    text: "Learn about store"
-    completed: false
-
-  yield toggleState 1
-
-  yield normalizerFetch()
-  .then (normalizer) -> dd normalizer
-
-  # yield deleteAll()
+    yield from task()
+    todos = yield getTodos()
+    dd todos

@@ -16,9 +16,9 @@ module.exports = (store, tasks, action) ->
   unless waitList
 
     waitList = [
-      "Learn about actions"
-      "Learn about reducers"
-      "Learn about store"
+      'Learn about actions'
+      'Learn about reducers'
+      'Learn about store'
       'Learn about sagas'
     ]
 
