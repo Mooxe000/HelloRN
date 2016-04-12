@@ -1,6 +1,7 @@
 echo = console.log
 dd = require 'ddeyes'
 { assign } = Object
+
 EE = require './EventEmitter'
 isEqual = require 'is-equal'
 

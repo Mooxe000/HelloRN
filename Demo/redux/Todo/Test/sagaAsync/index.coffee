@@ -24,10 +24,16 @@ sagas =
 
 EE = require './EventEmitter'
 
+task =
+  cleanTodos: require './cleanTodos'
+  addTodos: require './addTodos'
+  modifyTodo: require './modifyTodo'
+
 tasks = [
-  require './cleanTodos'
-  require './addTodos'
-  require './modifyTodo'
+  task.cleanTodos
+  task.addTodos
+  task.modifyTodo
+  task.cleanTodos
 ]
 
 subscriber = (

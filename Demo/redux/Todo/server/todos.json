@@ -1,24 +1,4 @@
 {
   "todos": [
-    {
-      "id": "cimx4qajs0000eg39wzf5gz5b",
-      "text": "Learn about actions",
-      "completed": false
-    },
-    {
-      "id": "cimx4qakf0001eg39fox8d8d4",
-      "text": "Learn about reducers",
-      "completed": true
-    },
-    {
-      "id": "cimx4qalb0002eg3942vqdy36",
-      "text": "Learn about redux",
-      "completed": false
-    },
-    {
-      "id": "cimx4qalu0003eg39y7snszb6",
-      "text": "Learn about sagas",
-      "completed": false
-    }
   ]
 }
