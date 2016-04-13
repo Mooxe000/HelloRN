@@ -24,14 +24,14 @@ App =
 
 currentApp =
   # name: 'calculator'
-  # name: 'counter'
+  name: 'counter'
   # name: 'navigator'
   # name: 'explorer'
   # name: 'giftedListView'
-  name: 'noder'
+  # name: 'noder'
 
-  # type: 'cfx'
-  type: 'jsx'
+  type: 'cfx'
+  # type: 'jsx'
 
 Comp.reg 'HelloRN'
 , ->
