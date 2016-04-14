@@ -1,23 +1,18 @@
 echo = console.log
-dd = require 'ddeyes'
 { assign } = Object
+Immutable = require './immutableHelper'
+
 {
   createStore
   applyMiddleware
   combineReducers
 } = require 'redux'
 
-Immutable = require './immutableHelper'
-
-createStoreWithMiddleware = (pluginList) -> (
-  applyMiddleware.apply @, pluginList
-) createStore
-
 CreateStore = (reducers, pluginList = []) ->
-  reducer = combineReducers reducers
-  (
-    createStoreWithMiddleware pluginList
-  ) reducer
+  createStore(
+    combineReducers reducers
+    applyMiddleware.apply @, pluginList
+  )
 
 mergeReduce = (
   reduceMap

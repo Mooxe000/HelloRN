@@ -2,7 +2,7 @@
   Comps
   Styl
   cfx
-} = require '../../../common/cfx'
+} = require '../../../../common/cfx'
 
 {
   View
@@ -37,6 +37,7 @@ module.exports = cfx ->
   ,
     Text {}
     , counter
+    # , 0
   ,
     TouchableOpacity
       onPress: increment

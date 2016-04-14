@@ -1,11 +1,11 @@
-{
-  bindActionCreators
-} = require 'redux'
+{ cfxify } = require './cfx'
+{ bindActionCreators } = require 'redux'
 
-ReactRedux = require '../libs/react-redux/index'
+# ReactRedux = require '../libs/react-redux/index'
+ReactRedux = require 'react-redux'
 
 connect = (stateName, actions, Component) ->
-  ReactRedux.connect(
+  cfxify ReactRedux.connect(
     (state) ->
       state: state[stateName]
     (dispatch) ->

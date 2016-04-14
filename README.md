@@ -11,6 +11,7 @@ cd HelloRN
 
 yes | react-native upgrade; git checkout -- .gitignore
 
+# TODO add sed script to remove history
 # bash
 echo "alias rn-upgrade=' \
   yes | react-native android && \

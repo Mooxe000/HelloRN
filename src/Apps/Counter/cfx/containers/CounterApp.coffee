@@ -2,8 +2,10 @@
 {
   cfxify
   cfx
+} = require '../../../../common/cfx'
+{
   connect
-} = require '../../../common/cfx'
+} = require '../../../../common/reactReduxHelper'
 
 Counter = require '../components/Counter'
 counterActions = require '../actions/CounterActions'
@@ -15,10 +17,10 @@ CounterApp = cfx ->
   } = @props
 
   Counter(
-    assign actions
+    assign {}, actions
     , counter: state.count
   )
 
-module.exports = cfxify connect 'counter'
+module.exports = connect 'counter'
   , counterActions
   , CounterApp

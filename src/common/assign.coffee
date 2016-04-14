@@ -1,7 +1,9 @@
 { assign } = Object
 ___ = ->
+  # first param's type mast be 'object'
   if arguments[0] and typeof arguments[0] isnt 'object'
     throw new Error 'First of params must be an \'object\'.'
+
   args = [ {} ]
 
   unless arguments[0] instanceof Array
