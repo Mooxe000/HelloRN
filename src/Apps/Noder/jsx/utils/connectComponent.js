@@ -1,4 +1,4 @@
-import { connect } from '../../../../libs/react-redux/index';
+import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import actions from '../actions';
 

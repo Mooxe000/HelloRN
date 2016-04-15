@@ -1,7 +1,6 @@
 { cfxify } = require './cfx'
 { bindActionCreators } = require 'redux'
 
-# ReactRedux = require '../libs/react-redux/index'
 ReactRedux = require 'react-redux'
 
 connect = (stateName, actions, Component) ->

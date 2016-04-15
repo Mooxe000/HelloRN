@@ -3,18 +3,20 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "clean": "rm -rf ./android ./ios/ ./.flowconfig ./.watchmanconfig ./npm-debug.log*",
-    "install": "npm i --registry=https://registry.npm.taobao.org;rm -rf node_modules/lodash-*;rm -rf node_modules/lodash.*;npm i --registry=https://registry.npm.taobao.org lodash.template",
-    "start": "npm cache clean; node node_modules/react-native/local-cli/cli.js start",
-    "gulp": "rm -rf ./dest; gulp",
-    "update:check": "env NPM_CHECK_INSTALLER=cnpm npm-check -su",
-    "update:sub": "git submodule foreach --recursive git reset --hard; git submodule foreach --recursive git clean -fd; git submodule foreach git pull origin master",
-    "link": "rnpm link react-native-vector-icons; rnpm link react-native-barcodescanner; rnpm link react-native-camera; rnpm link react-native-vibration; rnpm link react-native-blur",
-    "watchman": "watchman watch-del $PWD; watchman watch-project $PWD"
+    "clean:rn": "./npm.sh cliean:rn",
+    "clean:prj": "./npm.sh clean:prj",
+    "install": "./npm.sh install",
+    "reinstall": "./npm.sh reinstall",
+    "gulp": "./npm.sh gulp",
+    "start": "./npm.sh start",
+    "update:check": "./npm.sh update:check",
+    "update:sub": "./npm.sh update:sub",
+    "link": "./npm.sh link",
+    "watchman": "./npm.sh watchman",
+    "alias:npm": "./npm.sh alias:npm"
   },
   "dependencies_comment": {
     "redux-promise": "^0.5.3",
-    "redux-thunk": "^2.0.1",
     "reduce-reducers": "^0.1.2"
   },
   "dependencies": {
@@ -51,6 +53,7 @@
     "redux-logger": "^2.6.1",
     "redux-on-state-change": "^1.0.0",
     "redux-saga": "^0.9.5",
+    "redux-thunk": "^2.0.1",
     "seamless-immutable": "^5.1.1",
     "util": "^0.10.3"
   },

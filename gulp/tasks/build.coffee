@@ -22,15 +22,5 @@ module.exports = ->
     ]
   .pipe gulp.dest './dest/Apps'
 
-  gulp.src './src/libs/react-redux/src/**/*.js'
-  .pipe babel
-    babelrc: false
-    presets: [
-      'es2015'
-      'stage-0'
-      'stage-2'
-    ]
-  .pipe gulp.dest './dest/libs/react-redux'
-
   gulp.src './src/**/images/**/*'
   .pipe gulp.dest './dest'

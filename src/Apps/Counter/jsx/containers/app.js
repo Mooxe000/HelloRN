@@ -1,6 +1,6 @@
 import React, { Component } from 'react-native';
 import { createStore, applyMiddleware, combineReducers } from 'redux';
-import { Provider } from '../../../../libs/react-redux/index.js';
+import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import createLogger from 'redux-logger';
 const logger = createLogger();
